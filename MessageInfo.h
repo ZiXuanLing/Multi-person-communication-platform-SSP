@@ -11,6 +11,7 @@
 class MessageInfo {
     GETSETVAR(int, user_id)
     GETSETVAR(int, message_id)
+    GETSETVAR(int, publish_time)
     GETSETSTR(10240, content)
 };
 

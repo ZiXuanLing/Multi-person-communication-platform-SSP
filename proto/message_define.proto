@@ -1,0 +1,81 @@
+syntax = "proto2";
+package ssp;
+// Odd numbers are received by the server, and even numbers are sent by the server
+// Login reply
+message LoginReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 101
+    optional int32 user_id=3;
+    optional string password=4;
+};
+// Login request
+message LoginRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 102
+    optional int32 ret=3;
+};
+// Logout reply
+message LogoutReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 103
+    optional int32 user_id=3;
+};
+//  logout request
+message LogoutRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2;// 104
+    optional int32 ret=3;
+};
+message MessageBase {
+    optional int32 ver=1;
+    optional int32 message_id=2;
+    optional int32 publisher=3;
+    optional string content=4;
+    optional int32 publish_time=5;
+};
+message PublishMessageReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 201
+    optional int32 user_id=3;
+    optional string content=4;
+};
+message PublishMessageRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 202
+    optional int32 ret=3;
+};
+message GetMessageReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 203
+    optional int32 user_id=3;
+};
+message GetMessageRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 204
+    optional int32 ret=3;
+    repeated MessageBase message_list=4;
+};
+// The snapshot
+message GetPhotoReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 205
+    optional int32 user_id=3;
+};
+message GetPhotoRsq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 206
+    optional int32 ret=3;
+    optional MessageBase last_message= 4;
+};
+// add friend
+message AddFriendReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 301
+    optional int32 user_id=3;
+    optional int32 other_id=4;
+};
+message AddFriendRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 302
+    optional int32 ret=3;
+};

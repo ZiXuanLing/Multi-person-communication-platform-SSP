@@ -13,6 +13,7 @@
 #define USER_EXIST -100
 #define USER_NOT_EXIST -101   // User does not exist
 #define USER_NEED_DELETE -102
+#define WRONG_PASSWORD -103
 
 #define IS_FRIEND -200
 #define NOT_FRIEND -201
@@ -34,5 +35,11 @@
 #define DB_CONN_INIT_FAIL -600
 #define DB_CONN_CONNECT_FAIL -601
 #define DB_QUERY_FAIL -603
+
+#define FLAG_INIT 0
+#define FLAG_DELETE 1
+#define FLAG_UPDATE 2
+
+
 
 #endif // !__ERR_DEFINE_H__

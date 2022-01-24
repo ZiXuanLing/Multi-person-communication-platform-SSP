@@ -1,6 +1,6 @@
-#ifndef __USERMANAGER_H__
+#ifndef __USER_MANAGER_H__
 
-#define __USERMANAGER_H__
+#define __USER_MANAGER_H__
 
 #include "UserInfo.h"
 
@@ -20,4 +20,4 @@ public:
     int DeleteUser(int user_id);
 };
 
-#endif // !__USERMANAGER_H__
+#endif // !__USER_MANAGER_H__

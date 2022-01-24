@@ -1,3 +1,7 @@
+#ifndef __USER_INFO_H__
+
+#define __USER_INFO_H__
+
 #include <string.h>
 
 #include "proto/user_info_base.pb.h"
@@ -21,3 +25,5 @@ public:
     GETSETVAR(int, fresh_time)
     GETSETSTR(256, password)
 } UserInfo;
+
+#endif // !__USER_INFO_H__

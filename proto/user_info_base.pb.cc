@@ -62,18 +62,20 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::UserInfoBase, login_time_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::UserInfoBase, last_login_time_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::UserInfoBase, fresh_time_),
-  2,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::UserInfoBase, password_),
   3,
+  4,
   0,
   1,
-  4,
   5,
   6,
   7,
   8,
+  9,
+  2,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 14, sizeof(::ssp::UserInfoBase)},
+  { 0, 15, sizeof(::ssp::UserInfoBase)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -101,15 +103,15 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\024user_info_base.proto\022\003ssp\"\263\001\n\014UserInfo"
+      "\n\024user_info_base.proto\022\003ssp\"\305\001\n\014UserInfo"
       "Base\022\013\n\003ver\030\001 \001(\r\022\017\n\007user_id\030\002 \001(\r\022\021\n\tus"
       "er_name\030\003 \001(\t\022\021\n\tnick_name\030\004 \001(\t\022\020\n\010reg_"
       "time\030\005 \001(\r\022\014\n\004from\030\006 \001(\r\022\022\n\nlogin_time\030\007"
       " \001(\r\022\027\n\017last_login_time\030\010 \001(\r\022\022\n\nfresh_t"
-      "ime\030\t \001(\r"
+      "ime\030\t \001(\r\022\020\n\010password\030\n \001(\t"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 209);
+      descriptor, 227);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "user_info_base.proto", &protobuf_RegisterTypes);
 }
@@ -141,6 +143,7 @@ const int UserInfoBase::kFromFieldNumber;
 const int UserInfoBase::kLoginTimeFieldNumber;
 const int UserInfoBase::kLastLoginTimeFieldNumber;
 const int UserInfoBase::kFreshTimeFieldNumber;
+const int UserInfoBase::kPasswordFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 UserInfoBase::UserInfoBase()
@@ -163,6 +166,10 @@ UserInfoBase::UserInfoBase(const UserInfoBase& from)
   if (from.has_nick_name()) {
     nick_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.nick_name_);
   }
+  password_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.has_password()) {
+    password_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.password_);
+  }
   ::memcpy(&ver_, &from.ver_,
     static_cast<size_t>(reinterpret_cast<char*>(&fresh_time_) -
     reinterpret_cast<char*>(&ver_)) + sizeof(fresh_time_));
@@ -172,6 +179,7 @@ UserInfoBase::UserInfoBase(const UserInfoBase& from)
 void UserInfoBase::SharedCtor() {
   user_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   nick_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  password_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&ver_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&fresh_time_) -
       reinterpret_cast<char*>(&ver_)) + sizeof(fresh_time_));
@@ -185,6 +193,7 @@ UserInfoBase::~UserInfoBase() {
 void UserInfoBase::SharedDtor() {
   user_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   nick_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  password_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void UserInfoBase::SetCachedSize(int size) const {
@@ -208,20 +217,27 @@ void UserInfoBase::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
+  if (cached_has_bits & 7u) {
     if (cached_has_bits & 0x00000001u) {
       user_name_.ClearNonDefaultToEmptyNoArena();
     }
     if (cached_has_bits & 0x00000002u) {
       nick_name_.ClearNonDefaultToEmptyNoArena();
     }
+    if (cached_has_bits & 0x00000004u) {
+      password_.ClearNonDefaultToEmptyNoArena();
+    }
   }
-  if (cached_has_bits & 252u) {
+  if (cached_has_bits & 248u) {
     ::memset(&ver_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&last_login_time_) -
-        reinterpret_cast<char*>(&ver_)) + sizeof(last_login_time_));
+        reinterpret_cast<char*>(&login_time_) -
+        reinterpret_cast<char*>(&ver_)) + sizeof(login_time_));
   }
-  fresh_time_ = 0u;
+  if (cached_has_bits & 768u) {
+    ::memset(&last_login_time_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&fresh_time_) -
+        reinterpret_cast<char*>(&last_login_time_)) + sizeof(fresh_time_));
+  }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
@@ -366,6 +382,22 @@ bool UserInfoBase::MergePartialFromCodedStream(
         break;
       }
 
+      // optional string password = 10;
+      case 10: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_password()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->password().data(), static_cast<int>(this->password().length()),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "ssp.UserInfoBase.password");
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -394,12 +426,12 @@ void UserInfoBase::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional uint32 ver = 1;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->ver(), output);
   }
 
   // optional uint32 user_id = 2;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000010u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->user_id(), output);
   }
 
@@ -424,28 +456,38 @@ void UserInfoBase::SerializeWithCachedSizes(
   }
 
   // optional uint32 reg_time = 5;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(5, this->reg_time(), output);
   }
 
   // optional uint32 from = 6;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000040u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(6, this->from(), output);
   }
 
   // optional uint32 login_time = 7;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000080u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(7, this->login_time(), output);
   }
 
   // optional uint32 last_login_time = 8;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000100u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->last_login_time(), output);
   }
 
   // optional uint32 fresh_time = 9;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000200u) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(9, this->fresh_time(), output);
+  }
+
+  // optional string password = 10;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->password().data(), static_cast<int>(this->password().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "ssp.UserInfoBase.password");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      10, this->password(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -464,12 +506,12 @@ void UserInfoBase::SerializeWithCachedSizes(
 
   cached_has_bits = _has_bits_[0];
   // optional uint32 ver = 1;
-  if (cached_has_bits & 0x00000004u) {
+  if (cached_has_bits & 0x00000008u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->ver(), target);
   }
 
   // optional uint32 user_id = 2;
-  if (cached_has_bits & 0x00000008u) {
+  if (cached_has_bits & 0x00000010u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->user_id(), target);
   }
 
@@ -496,28 +538,39 @@ void UserInfoBase::SerializeWithCachedSizes(
   }
 
   // optional uint32 reg_time = 5;
-  if (cached_has_bits & 0x00000010u) {
+  if (cached_has_bits & 0x00000020u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(5, this->reg_time(), target);
   }
 
   // optional uint32 from = 6;
-  if (cached_has_bits & 0x00000020u) {
+  if (cached_has_bits & 0x00000040u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(6, this->from(), target);
   }
 
   // optional uint32 login_time = 7;
-  if (cached_has_bits & 0x00000040u) {
+  if (cached_has_bits & 0x00000080u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(7, this->login_time(), target);
   }
 
   // optional uint32 last_login_time = 8;
-  if (cached_has_bits & 0x00000080u) {
+  if (cached_has_bits & 0x00000100u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->last_login_time(), target);
   }
 
   // optional uint32 fresh_time = 9;
-  if (cached_has_bits & 0x00000100u) {
+  if (cached_has_bits & 0x00000200u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(9, this->fresh_time(), target);
+  }
+
+  // optional string password = 10;
+  if (cached_has_bits & 0x00000004u) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->password().data(), static_cast<int>(this->password().length()),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "ssp.UserInfoBase.password");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        10, this->password(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -550,6 +603,13 @@ size_t UserInfoBase::ByteSizeLong() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->nick_name());
+    }
+
+    // optional string password = 10;
+    if (has_password()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->password());
     }
 
     // optional uint32 ver = 1;
@@ -587,6 +647,8 @@ size_t UserInfoBase::ByteSizeLong() const {
           this->login_time());
     }
 
+  }
+  if (_has_bits_[8 / 32] & 768u) {
     // optional uint32 last_login_time = 8;
     if (has_last_login_time()) {
       total_size += 1 +
@@ -594,14 +656,14 @@ size_t UserInfoBase::ByteSizeLong() const {
           this->last_login_time());
     }
 
-  }
-  // optional uint32 fresh_time = 9;
-  if (has_fresh_time()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->fresh_time());
-  }
+    // optional uint32 fresh_time = 9;
+    if (has_fresh_time()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->fresh_time());
+    }
 
+  }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -640,27 +702,34 @@ void UserInfoBase::MergeFrom(const UserInfoBase& from) {
       nick_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.nick_name_);
     }
     if (cached_has_bits & 0x00000004u) {
-      ver_ = from.ver_;
+      set_has_password();
+      password_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.password_);
     }
     if (cached_has_bits & 0x00000008u) {
-      user_id_ = from.user_id_;
+      ver_ = from.ver_;
     }
     if (cached_has_bits & 0x00000010u) {
-      reg_time_ = from.reg_time_;
+      user_id_ = from.user_id_;
     }
     if (cached_has_bits & 0x00000020u) {
-      from_ = from.from_;
+      reg_time_ = from.reg_time_;
     }
     if (cached_has_bits & 0x00000040u) {
-      login_time_ = from.login_time_;
+      from_ = from.from_;
     }
     if (cached_has_bits & 0x00000080u) {
-      last_login_time_ = from.last_login_time_;
+      login_time_ = from.login_time_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 0x00000100u) {
-    set_fresh_time(from.fresh_time());
+  if (cached_has_bits & 768u) {
+    if (cached_has_bits & 0x00000100u) {
+      last_login_time_ = from.last_login_time_;
+    }
+    if (cached_has_bits & 0x00000200u) {
+      fresh_time_ = from.fresh_time_;
+    }
+    _has_bits_[0] |= cached_has_bits;
   }
 }
 
@@ -691,6 +760,8 @@ void UserInfoBase::InternalSwap(UserInfoBase* other) {
   user_name_.Swap(&other->user_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   nick_name_.Swap(&other->nick_name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  password_.Swap(&other->password_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(ver_, other->ver_);
   swap(user_id_, other->user_id_);

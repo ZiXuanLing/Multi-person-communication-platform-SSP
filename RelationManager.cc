@@ -30,7 +30,7 @@ RelationInfo* RelationManager::GetRelation(int user_id) {
 }
 
 int RelationManager::AddFriend(int user_id, int other_id) {
-    RelationInfo* friend_list = GetFriend(user_id);
+    RelationInfo* friend_list = GetRelation(user_id);
     if (friend_list == NULL) {
         return RELATION_NOT_FOUND;
     }
@@ -39,7 +39,7 @@ int RelationManager::AddFriend(int user_id, int other_id) {
 }
 
 int RelationManager::DeleteFriend(int user_id, int other_id) {
-    RelationInfo* friend_list = GetFriend(user_id);
+    RelationInfo* friend_list = GetRelation(user_id);
     if (friend_list == NULL) {
         return RELATION_NOT_FOUND;
     }
@@ -48,7 +48,7 @@ int RelationManager::DeleteFriend(int user_id, int other_id) {
 }
 
 int RelationManager::AddBlack(int user_id, int other_id) {
-    RelationInfo* black_list = GetBlack(user_id);
+    RelationInfo* black_list = GetRelation(user_id);
     if (black_list == NULL) {
         return RELATION_NOT_FOUND;
     }
@@ -57,7 +57,7 @@ int RelationManager::AddBlack(int user_id, int other_id) {
 }
 
 int RelationManager::DeleteBlack(int user_id, int other_id) {
-    RelationInfo* black_list = GetBlack(user_id);
+    RelationInfo* black_list = GetRelation(user_id);
     if (black_list == NULL) {
         return RELATION_NOT_FOUND;
     }

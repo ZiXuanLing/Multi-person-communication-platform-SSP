@@ -16,7 +16,7 @@ public:
 public:
     MessageInfo* GetMessage(int user_id, int message_id);
     MessageInfo* GetMessage(int message_id);
-    MessageInfo* PushMessage(MessageInfo message);
-    MessageInfo* DeleteMessage(int message_id);
+    int PushMessage(MessageInfo message);
+    int DeleteMessage(int message_id);
 };
 #endif // !__MESSAGE_MANAGER_H__

@@ -38,7 +38,7 @@ namespace protobuf_message_5fdefine_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[13];
+  static const ::google::protobuf::internal::ParseTable schema[21];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -46,12 +46,30 @@ struct TableStruct {
 void AddDescriptors();
 }  // namespace protobuf_message_5fdefine_2eproto
 namespace ssp {
+class AddBlackReq;
+class AddBlackReqDefaultTypeInternal;
+extern AddBlackReqDefaultTypeInternal _AddBlackReq_default_instance_;
+class AddBlackRsp;
+class AddBlackRspDefaultTypeInternal;
+extern AddBlackRspDefaultTypeInternal _AddBlackRsp_default_instance_;
 class AddFriendReq;
 class AddFriendReqDefaultTypeInternal;
 extern AddFriendReqDefaultTypeInternal _AddFriendReq_default_instance_;
 class AddFriendRsp;
 class AddFriendRspDefaultTypeInternal;
 extern AddFriendRspDefaultTypeInternal _AddFriendRsp_default_instance_;
+class DelBlackReq;
+class DelBlackReqDefaultTypeInternal;
+extern DelBlackReqDefaultTypeInternal _DelBlackReq_default_instance_;
+class DelBlackRsp;
+class DelBlackRspDefaultTypeInternal;
+extern DelBlackRspDefaultTypeInternal _DelBlackRsp_default_instance_;
+class DelFriendReq;
+class DelFriendReqDefaultTypeInternal;
+extern DelFriendReqDefaultTypeInternal _DelFriendReq_default_instance_;
+class DelFriendRsp;
+class DelFriendRspDefaultTypeInternal;
+extern DelFriendRspDefaultTypeInternal _DelFriendRsp_default_instance_;
 class GetMessageReq;
 class GetMessageReqDefaultTypeInternal;
 extern GetMessageReqDefaultTypeInternal _GetMessageReq_default_instance_;
@@ -85,11 +103,23 @@ extern PublishMessageReqDefaultTypeInternal _PublishMessageReq_default_instance_
 class PublishMessageRsp;
 class PublishMessageRspDefaultTypeInternal;
 extern PublishMessageRspDefaultTypeInternal _PublishMessageRsp_default_instance_;
+class RegReq;
+class RegReqDefaultTypeInternal;
+extern RegReqDefaultTypeInternal _RegReq_default_instance_;
+class RegRsp;
+class RegRspDefaultTypeInternal;
+extern RegRspDefaultTypeInternal _RegRsp_default_instance_;
 }  // namespace ssp
 namespace google {
 namespace protobuf {
+template<> ::ssp::AddBlackReq* Arena::CreateMaybeMessage<::ssp::AddBlackReq>(Arena*);
+template<> ::ssp::AddBlackRsp* Arena::CreateMaybeMessage<::ssp::AddBlackRsp>(Arena*);
 template<> ::ssp::AddFriendReq* Arena::CreateMaybeMessage<::ssp::AddFriendReq>(Arena*);
 template<> ::ssp::AddFriendRsp* Arena::CreateMaybeMessage<::ssp::AddFriendRsp>(Arena*);
+template<> ::ssp::DelBlackReq* Arena::CreateMaybeMessage<::ssp::DelBlackReq>(Arena*);
+template<> ::ssp::DelBlackRsp* Arena::CreateMaybeMessage<::ssp::DelBlackRsp>(Arena*);
+template<> ::ssp::DelFriendReq* Arena::CreateMaybeMessage<::ssp::DelFriendReq>(Arena*);
+template<> ::ssp::DelFriendRsp* Arena::CreateMaybeMessage<::ssp::DelFriendRsp>(Arena*);
 template<> ::ssp::GetMessageReq* Arena::CreateMaybeMessage<::ssp::GetMessageReq>(Arena*);
 template<> ::ssp::GetMessageRsp* Arena::CreateMaybeMessage<::ssp::GetMessageRsp>(Arena*);
 template<> ::ssp::GetPhotoReq* Arena::CreateMaybeMessage<::ssp::GetPhotoReq>(Arena*);
@@ -101,11 +131,327 @@ template<> ::ssp::LogoutRsp* Arena::CreateMaybeMessage<::ssp::LogoutRsp>(Arena*)
 template<> ::ssp::MessageBase* Arena::CreateMaybeMessage<::ssp::MessageBase>(Arena*);
 template<> ::ssp::PublishMessageReq* Arena::CreateMaybeMessage<::ssp::PublishMessageReq>(Arena*);
 template<> ::ssp::PublishMessageRsp* Arena::CreateMaybeMessage<::ssp::PublishMessageRsp>(Arena*);
+template<> ::ssp::RegReq* Arena::CreateMaybeMessage<::ssp::RegReq>(Arena*);
+template<> ::ssp::RegRsp* Arena::CreateMaybeMessage<::ssp::RegRsp>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace ssp {
 
 // ===================================================================
+
+class RegReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.RegReq) */ {
+ public:
+  RegReq();
+  virtual ~RegReq();
+
+  RegReq(const RegReq& from);
+
+  inline RegReq& operator=(const RegReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  RegReq(RegReq&& from) noexcept
+    : RegReq() {
+    *this = ::std::move(from);
+  }
+
+  inline RegReq& operator=(RegReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RegReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RegReq* internal_default_instance() {
+    return reinterpret_cast<const RegReq*>(
+               &_RegReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  void Swap(RegReq* other);
+  friend void swap(RegReq& a, RegReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RegReq* New() const final {
+    return CreateMaybeMessage<RegReq>(NULL);
+  }
+
+  RegReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<RegReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const RegReq& from);
+  void MergeFrom(const RegReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string user_name = 3;
+  bool has_user_name() const;
+  void clear_user_name();
+  static const int kUserNameFieldNumber = 3;
+  const ::std::string& user_name() const;
+  void set_user_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_user_name(::std::string&& value);
+  #endif
+  void set_user_name(const char* value);
+  void set_user_name(const char* value, size_t size);
+  ::std::string* mutable_user_name();
+  ::std::string* release_user_name();
+  void set_allocated_user_name(::std::string* user_name);
+
+  // optional string password = 4;
+  bool has_password() const;
+  void clear_password();
+  static const int kPasswordFieldNumber = 4;
+  const ::std::string& password() const;
+  void set_password(const ::std::string& value);
+  #if LANG_CXX11
+  void set_password(::std::string&& value);
+  #endif
+  void set_password(const char* value);
+  void set_password(const char* value, size_t size);
+  ::std::string* mutable_password();
+  ::std::string* release_password();
+  void set_allocated_password(::std::string* password);
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 from = 5;
+  bool has_from() const;
+  void clear_from();
+  static const int kFromFieldNumber = 5;
+  ::google::protobuf::int32 from() const;
+  void set_from(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.RegReq)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_user_name();
+  void clear_has_user_name();
+  void set_has_password();
+  void clear_has_password();
+  void set_has_from();
+  void clear_has_from();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr user_name_;
+  ::google::protobuf::internal::ArenaStringPtr password_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 from_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class RegRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.RegRsp) */ {
+ public:
+  RegRsp();
+  virtual ~RegRsp();
+
+  RegRsp(const RegRsp& from);
+
+  inline RegRsp& operator=(const RegRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  RegRsp(RegRsp&& from) noexcept
+    : RegRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline RegRsp& operator=(RegRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RegRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RegRsp* internal_default_instance() {
+    return reinterpret_cast<const RegRsp*>(
+               &_RegRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  void Swap(RegRsp* other);
+  friend void swap(RegRsp& a, RegRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RegRsp* New() const final {
+    return CreateMaybeMessage<RegRsp>(NULL);
+  }
+
+  RegRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<RegRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const RegRsp& from);
+  void MergeFrom(const RegRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 ret = 3;
+  bool has_ret() const;
+  void clear_ret();
+  static const int kRetFieldNumber = 3;
+  ::google::protobuf::int32 ret() const;
+  void set_ret(::google::protobuf::int32 value);
+
+  // optional int32 user_id = 4;
+  bool has_user_id() const;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 4;
+  ::google::protobuf::int32 user_id() const;
+  void set_user_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.RegRsp)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_ret();
+  void clear_has_ret();
+  void set_has_user_id();
+  void clear_has_user_id();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 ret_;
+  ::google::protobuf::int32 user_id_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
 
 class LoginReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.LoginReq) */ {
  public:
@@ -149,7 +495,7 @@ class LoginReq : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_LoginReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   void Swap(LoginReq* other);
   friend void swap(LoginReq& a, LoginReq& b) {
@@ -201,6 +547,21 @@ class LoginReq : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   // accessors -------------------------------------------------------
 
+  // optional string user_name = 3;
+  bool has_user_name() const;
+  void clear_user_name();
+  static const int kUserNameFieldNumber = 3;
+  const ::std::string& user_name() const;
+  void set_user_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_user_name(::std::string&& value);
+  #endif
+  void set_user_name(const char* value);
+  void set_user_name(const char* value, size_t size);
+  ::std::string* mutable_user_name();
+  ::std::string* release_user_name();
+  void set_allocated_user_name(::std::string* user_name);
+
   // optional string password = 4;
   bool has_password() const;
   void clear_password();
@@ -230,31 +591,24 @@ class LoginReq : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::int32 mess_type() const;
   void set_mess_type(::google::protobuf::int32 value);
 
-  // optional int32 user_id = 3;
-  bool has_user_id() const;
-  void clear_user_id();
-  static const int kUserIdFieldNumber = 3;
-  ::google::protobuf::int32 user_id() const;
-  void set_user_id(::google::protobuf::int32 value);
-
   // @@protoc_insertion_point(class_scope:ssp.LoginReq)
  private:
   void set_has_ver();
   void clear_has_ver();
   void set_has_mess_type();
   void clear_has_mess_type();
-  void set_has_user_id();
-  void clear_has_user_id();
+  void set_has_user_name();
+  void clear_has_user_name();
   void set_has_password();
   void clear_has_password();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr user_name_;
   ::google::protobuf::internal::ArenaStringPtr password_;
   ::google::protobuf::int32 ver_;
   ::google::protobuf::int32 mess_type_;
-  ::google::protobuf::int32 user_id_;
   friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -301,7 +655,7 @@ class LoginRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(
                &_LoginRsp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   void Swap(LoginRsp* other);
   friend void swap(LoginRsp& a, LoginRsp& b) {
@@ -374,6 +728,13 @@ class LoginRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::int32 ret() const;
   void set_ret(::google::protobuf::int32 value);
 
+  // optional int32 user_id = 4;
+  bool has_user_id() const;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 4;
+  ::google::protobuf::int32 user_id() const;
+  void set_user_id(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:ssp.LoginRsp)
  private:
   void set_has_ver();
@@ -382,6 +743,8 @@ class LoginRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(
   void clear_has_mess_type();
   void set_has_ret();
   void clear_has_ret();
+  void set_has_user_id();
+  void clear_has_user_id();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
@@ -389,6 +752,7 @@ class LoginRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::int32 ver_;
   ::google::protobuf::int32 mess_type_;
   ::google::protobuf::int32 ret_;
+  ::google::protobuf::int32 user_id_;
   friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -435,7 +799,7 @@ class LogoutReq : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_LogoutReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   void Swap(LogoutReq* other);
   friend void swap(LogoutReq& a, LogoutReq& b) {
@@ -569,7 +933,7 @@ class LogoutRsp : public ::google::protobuf::Message /* @@protoc_insertion_point
                &_LogoutRsp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   void Swap(LogoutRsp* other);
   friend void swap(LogoutRsp& a, LogoutRsp& b) {
@@ -703,7 +1067,7 @@ class MessageBase : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_MessageBase_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   void Swap(MessageBase* other);
   friend void swap(MessageBase& a, MessageBase& b) {
@@ -865,7 +1229,7 @@ class PublishMessageReq : public ::google::protobuf::Message /* @@protoc_inserti
                &_PublishMessageReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   void Swap(PublishMessageReq* other);
   friend void swap(PublishMessageReq& a, PublishMessageReq& b) {
@@ -1017,7 +1381,7 @@ class PublishMessageRsp : public ::google::protobuf::Message /* @@protoc_inserti
                &_PublishMessageRsp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   void Swap(PublishMessageRsp* other);
   friend void swap(PublishMessageRsp& a, PublishMessageRsp& b) {
@@ -1151,7 +1515,7 @@ class GetMessageReq : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetMessageReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   void Swap(GetMessageReq* other);
   friend void swap(GetMessageReq& a, GetMessageReq& b) {
@@ -1285,7 +1649,7 @@ class GetMessageRsp : public ::google::protobuf::Message /* @@protoc_insertion_p
                &_GetMessageRsp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   void Swap(GetMessageRsp* other);
   friend void swap(GetMessageRsp& a, GetMessageRsp& b) {
@@ -1432,7 +1796,7 @@ class GetPhotoReq : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_GetPhotoReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   void Swap(GetPhotoReq* other);
   friend void swap(GetPhotoReq& a, GetPhotoReq& b) {
@@ -1566,7 +1930,7 @@ class GetPhotoRsq : public ::google::protobuf::Message /* @@protoc_insertion_poi
                &_GetPhotoRsq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   void Swap(GetPhotoRsq* other);
   friend void swap(GetPhotoRsq& a, GetPhotoRsq& b) {
@@ -1715,7 +2079,7 @@ class AddFriendReq : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_AddFriendReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   void Swap(AddFriendReq* other);
   friend void swap(AddFriendReq& a, AddFriendReq& b) {
@@ -1859,7 +2223,7 @@ class AddFriendRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_AddFriendRsp_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
   void Swap(AddFriendRsp* other);
   friend void swap(AddFriendRsp& a, AddFriendRsp& b) {
@@ -1949,6 +2313,840 @@ class AddFriendRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::int32 ret_;
   friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
 };
+// -------------------------------------------------------------------
+
+class DelFriendReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.DelFriendReq) */ {
+ public:
+  DelFriendReq();
+  virtual ~DelFriendReq();
+
+  DelFriendReq(const DelFriendReq& from);
+
+  inline DelFriendReq& operator=(const DelFriendReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  DelFriendReq(DelFriendReq&& from) noexcept
+    : DelFriendReq() {
+    *this = ::std::move(from);
+  }
+
+  inline DelFriendReq& operator=(DelFriendReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DelFriendReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DelFriendReq* internal_default_instance() {
+    return reinterpret_cast<const DelFriendReq*>(
+               &_DelFriendReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  void Swap(DelFriendReq* other);
+  friend void swap(DelFriendReq& a, DelFriendReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DelFriendReq* New() const final {
+    return CreateMaybeMessage<DelFriendReq>(NULL);
+  }
+
+  DelFriendReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<DelFriendReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const DelFriendReq& from);
+  void MergeFrom(const DelFriendReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DelFriendReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 user_id = 3;
+  bool has_user_id() const;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 3;
+  ::google::protobuf::int32 user_id() const;
+  void set_user_id(::google::protobuf::int32 value);
+
+  // optional int32 other_id = 4;
+  bool has_other_id() const;
+  void clear_other_id();
+  static const int kOtherIdFieldNumber = 4;
+  ::google::protobuf::int32 other_id() const;
+  void set_other_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.DelFriendReq)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_user_id();
+  void clear_has_user_id();
+  void set_has_other_id();
+  void clear_has_other_id();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 user_id_;
+  ::google::protobuf::int32 other_id_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class DelFriendRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.DelFriendRsp) */ {
+ public:
+  DelFriendRsp();
+  virtual ~DelFriendRsp();
+
+  DelFriendRsp(const DelFriendRsp& from);
+
+  inline DelFriendRsp& operator=(const DelFriendRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  DelFriendRsp(DelFriendRsp&& from) noexcept
+    : DelFriendRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline DelFriendRsp& operator=(DelFriendRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DelFriendRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DelFriendRsp* internal_default_instance() {
+    return reinterpret_cast<const DelFriendRsp*>(
+               &_DelFriendRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    16;
+
+  void Swap(DelFriendRsp* other);
+  friend void swap(DelFriendRsp& a, DelFriendRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DelFriendRsp* New() const final {
+    return CreateMaybeMessage<DelFriendRsp>(NULL);
+  }
+
+  DelFriendRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<DelFriendRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const DelFriendRsp& from);
+  void MergeFrom(const DelFriendRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DelFriendRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 ret = 3;
+  bool has_ret() const;
+  void clear_ret();
+  static const int kRetFieldNumber = 3;
+  ::google::protobuf::int32 ret() const;
+  void set_ret(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.DelFriendRsp)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_ret();
+  void clear_has_ret();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 ret_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class AddBlackReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.AddBlackReq) */ {
+ public:
+  AddBlackReq();
+  virtual ~AddBlackReq();
+
+  AddBlackReq(const AddBlackReq& from);
+
+  inline AddBlackReq& operator=(const AddBlackReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  AddBlackReq(AddBlackReq&& from) noexcept
+    : AddBlackReq() {
+    *this = ::std::move(from);
+  }
+
+  inline AddBlackReq& operator=(AddBlackReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AddBlackReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AddBlackReq* internal_default_instance() {
+    return reinterpret_cast<const AddBlackReq*>(
+               &_AddBlackReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    17;
+
+  void Swap(AddBlackReq* other);
+  friend void swap(AddBlackReq& a, AddBlackReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AddBlackReq* New() const final {
+    return CreateMaybeMessage<AddBlackReq>(NULL);
+  }
+
+  AddBlackReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<AddBlackReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const AddBlackReq& from);
+  void MergeFrom(const AddBlackReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AddBlackReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 user_id = 3;
+  bool has_user_id() const;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 3;
+  ::google::protobuf::int32 user_id() const;
+  void set_user_id(::google::protobuf::int32 value);
+
+  // optional int32 other_id = 4;
+  bool has_other_id() const;
+  void clear_other_id();
+  static const int kOtherIdFieldNumber = 4;
+  ::google::protobuf::int32 other_id() const;
+  void set_other_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.AddBlackReq)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_user_id();
+  void clear_has_user_id();
+  void set_has_other_id();
+  void clear_has_other_id();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 user_id_;
+  ::google::protobuf::int32 other_id_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class AddBlackRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.AddBlackRsp) */ {
+ public:
+  AddBlackRsp();
+  virtual ~AddBlackRsp();
+
+  AddBlackRsp(const AddBlackRsp& from);
+
+  inline AddBlackRsp& operator=(const AddBlackRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  AddBlackRsp(AddBlackRsp&& from) noexcept
+    : AddBlackRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline AddBlackRsp& operator=(AddBlackRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AddBlackRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const AddBlackRsp* internal_default_instance() {
+    return reinterpret_cast<const AddBlackRsp*>(
+               &_AddBlackRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    18;
+
+  void Swap(AddBlackRsp* other);
+  friend void swap(AddBlackRsp& a, AddBlackRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline AddBlackRsp* New() const final {
+    return CreateMaybeMessage<AddBlackRsp>(NULL);
+  }
+
+  AddBlackRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<AddBlackRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const AddBlackRsp& from);
+  void MergeFrom(const AddBlackRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AddBlackRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 ret = 3;
+  bool has_ret() const;
+  void clear_ret();
+  static const int kRetFieldNumber = 3;
+  ::google::protobuf::int32 ret() const;
+  void set_ret(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.AddBlackRsp)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_ret();
+  void clear_has_ret();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 ret_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class DelBlackReq : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.DelBlackReq) */ {
+ public:
+  DelBlackReq();
+  virtual ~DelBlackReq();
+
+  DelBlackReq(const DelBlackReq& from);
+
+  inline DelBlackReq& operator=(const DelBlackReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  DelBlackReq(DelBlackReq&& from) noexcept
+    : DelBlackReq() {
+    *this = ::std::move(from);
+  }
+
+  inline DelBlackReq& operator=(DelBlackReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DelBlackReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DelBlackReq* internal_default_instance() {
+    return reinterpret_cast<const DelBlackReq*>(
+               &_DelBlackReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    19;
+
+  void Swap(DelBlackReq* other);
+  friend void swap(DelBlackReq& a, DelBlackReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DelBlackReq* New() const final {
+    return CreateMaybeMessage<DelBlackReq>(NULL);
+  }
+
+  DelBlackReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<DelBlackReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const DelBlackReq& from);
+  void MergeFrom(const DelBlackReq& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DelBlackReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 user_id = 3;
+  bool has_user_id() const;
+  void clear_user_id();
+  static const int kUserIdFieldNumber = 3;
+  ::google::protobuf::int32 user_id() const;
+  void set_user_id(::google::protobuf::int32 value);
+
+  // optional int32 other_id = 4;
+  bool has_other_id() const;
+  void clear_other_id();
+  static const int kOtherIdFieldNumber = 4;
+  ::google::protobuf::int32 other_id() const;
+  void set_other_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.DelBlackReq)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_user_id();
+  void clear_has_user_id();
+  void set_has_other_id();
+  void clear_has_other_id();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 user_id_;
+  ::google::protobuf::int32 other_id_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
+// -------------------------------------------------------------------
+
+class DelBlackRsp : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:ssp.DelBlackRsp) */ {
+ public:
+  DelBlackRsp();
+  virtual ~DelBlackRsp();
+
+  DelBlackRsp(const DelBlackRsp& from);
+
+  inline DelBlackRsp& operator=(const DelBlackRsp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  DelBlackRsp(DelBlackRsp&& from) noexcept
+    : DelBlackRsp() {
+    *this = ::std::move(from);
+  }
+
+  inline DelBlackRsp& operator=(DelBlackRsp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DelBlackRsp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DelBlackRsp* internal_default_instance() {
+    return reinterpret_cast<const DelBlackRsp*>(
+               &_DelBlackRsp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    20;
+
+  void Swap(DelBlackRsp* other);
+  friend void swap(DelBlackRsp& a, DelBlackRsp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DelBlackRsp* New() const final {
+    return CreateMaybeMessage<DelBlackRsp>(NULL);
+  }
+
+  DelBlackRsp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<DelBlackRsp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const DelBlackRsp& from);
+  void MergeFrom(const DelBlackRsp& from);
+  void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DelBlackRsp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ver = 1;
+  bool has_ver() const;
+  void clear_ver();
+  static const int kVerFieldNumber = 1;
+  ::google::protobuf::int32 ver() const;
+  void set_ver(::google::protobuf::int32 value);
+
+  // optional int32 mess_type = 2;
+  bool has_mess_type() const;
+  void clear_mess_type();
+  static const int kMessTypeFieldNumber = 2;
+  ::google::protobuf::int32 mess_type() const;
+  void set_mess_type(::google::protobuf::int32 value);
+
+  // optional int32 ret = 3;
+  bool has_ret() const;
+  void clear_ret();
+  static const int kRetFieldNumber = 3;
+  ::google::protobuf::int32 ret() const;
+  void set_ret(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ssp.DelBlackRsp)
+ private:
+  void set_has_ver();
+  void clear_has_ver();
+  void set_has_mess_type();
+  void clear_has_mess_type();
+  void set_has_ret();
+  void clear_has_ret();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::int32 ver_;
+  ::google::protobuf::int32 mess_type_;
+  ::google::protobuf::int32 ret_;
+  friend struct ::protobuf_message_5fdefine_2eproto::TableStruct;
+};
 // ===================================================================
 
 
@@ -1958,17 +3156,325 @@ class AddFriendRsp : public ::google::protobuf::Message /* @@protoc_insertion_po
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// RegReq
+
+// optional int32 ver = 1;
+inline bool RegReq::has_ver() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RegReq::set_has_ver() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RegReq::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RegReq::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 RegReq::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.RegReq.ver)
+  return ver_;
+}
+inline void RegReq::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.RegReq.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool RegReq::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RegReq::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RegReq::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RegReq::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 RegReq::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.RegReq.mess_type)
+  return mess_type_;
+}
+inline void RegReq::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.RegReq.mess_type)
+}
+
+// optional string user_name = 3;
+inline bool RegReq::has_user_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RegReq::set_has_user_name() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RegReq::clear_has_user_name() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RegReq::clear_user_name() {
+  user_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_user_name();
+}
+inline const ::std::string& RegReq::user_name() const {
+  // @@protoc_insertion_point(field_get:ssp.RegReq.user_name)
+  return user_name_.GetNoArena();
+}
+inline void RegReq::set_user_name(const ::std::string& value) {
+  set_has_user_name();
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:ssp.RegReq.user_name)
+}
+#if LANG_CXX11
+inline void RegReq::set_user_name(::std::string&& value) {
+  set_has_user_name();
+  user_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ssp.RegReq.user_name)
+}
+#endif
+inline void RegReq::set_user_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_user_name();
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ssp.RegReq.user_name)
+}
+inline void RegReq::set_user_name(const char* value, size_t size) {
+  set_has_user_name();
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ssp.RegReq.user_name)
+}
+inline ::std::string* RegReq::mutable_user_name() {
+  set_has_user_name();
+  // @@protoc_insertion_point(field_mutable:ssp.RegReq.user_name)
+  return user_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegReq::release_user_name() {
+  // @@protoc_insertion_point(field_release:ssp.RegReq.user_name)
+  if (!has_user_name()) {
+    return NULL;
+  }
+  clear_has_user_name();
+  return user_name_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegReq::set_allocated_user_name(::std::string* user_name) {
+  if (user_name != NULL) {
+    set_has_user_name();
+  } else {
+    clear_has_user_name();
+  }
+  user_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_name);
+  // @@protoc_insertion_point(field_set_allocated:ssp.RegReq.user_name)
+}
+
+// optional string password = 4;
+inline bool RegReq::has_password() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RegReq::set_has_password() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RegReq::clear_has_password() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RegReq::clear_password() {
+  password_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_password();
+}
+inline const ::std::string& RegReq::password() const {
+  // @@protoc_insertion_point(field_get:ssp.RegReq.password)
+  return password_.GetNoArena();
+}
+inline void RegReq::set_password(const ::std::string& value) {
+  set_has_password();
+  password_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:ssp.RegReq.password)
+}
+#if LANG_CXX11
+inline void RegReq::set_password(::std::string&& value) {
+  set_has_password();
+  password_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ssp.RegReq.password)
+}
+#endif
+inline void RegReq::set_password(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_password();
+  password_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ssp.RegReq.password)
+}
+inline void RegReq::set_password(const char* value, size_t size) {
+  set_has_password();
+  password_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ssp.RegReq.password)
+}
+inline ::std::string* RegReq::mutable_password() {
+  set_has_password();
+  // @@protoc_insertion_point(field_mutable:ssp.RegReq.password)
+  return password_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* RegReq::release_password() {
+  // @@protoc_insertion_point(field_release:ssp.RegReq.password)
+  if (!has_password()) {
+    return NULL;
+  }
+  clear_has_password();
+  return password_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void RegReq::set_allocated_password(::std::string* password) {
+  if (password != NULL) {
+    set_has_password();
+  } else {
+    clear_has_password();
+  }
+  password_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), password);
+  // @@protoc_insertion_point(field_set_allocated:ssp.RegReq.password)
+}
+
+// optional int32 from = 5;
+inline bool RegReq::has_from() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void RegReq::set_has_from() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void RegReq::clear_has_from() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void RegReq::clear_from() {
+  from_ = 0;
+  clear_has_from();
+}
+inline ::google::protobuf::int32 RegReq::from() const {
+  // @@protoc_insertion_point(field_get:ssp.RegReq.from)
+  return from_;
+}
+inline void RegReq::set_from(::google::protobuf::int32 value) {
+  set_has_from();
+  from_ = value;
+  // @@protoc_insertion_point(field_set:ssp.RegReq.from)
+}
+
+// -------------------------------------------------------------------
+
+// RegRsp
+
+// optional int32 ver = 1;
+inline bool RegRsp::has_ver() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void RegRsp::set_has_ver() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void RegRsp::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void RegRsp::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 RegRsp::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.RegRsp.ver)
+  return ver_;
+}
+inline void RegRsp::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.RegRsp.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool RegRsp::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RegRsp::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RegRsp::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RegRsp::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 RegRsp::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.RegRsp.mess_type)
+  return mess_type_;
+}
+inline void RegRsp::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.RegRsp.mess_type)
+}
+
+// optional int32 ret = 3;
+inline bool RegRsp::has_ret() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RegRsp::set_has_ret() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RegRsp::clear_has_ret() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RegRsp::clear_ret() {
+  ret_ = 0;
+  clear_has_ret();
+}
+inline ::google::protobuf::int32 RegRsp::ret() const {
+  // @@protoc_insertion_point(field_get:ssp.RegRsp.ret)
+  return ret_;
+}
+inline void RegRsp::set_ret(::google::protobuf::int32 value) {
+  set_has_ret();
+  ret_ = value;
+  // @@protoc_insertion_point(field_set:ssp.RegRsp.ret)
+}
+
+// optional int32 user_id = 4;
+inline bool RegRsp::has_user_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RegRsp::set_has_user_id() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RegRsp::clear_has_user_id() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RegRsp::clear_user_id() {
+  user_id_ = 0;
+  clear_has_user_id();
+}
+inline ::google::protobuf::int32 RegRsp::user_id() const {
+  // @@protoc_insertion_point(field_get:ssp.RegRsp.user_id)
+  return user_id_;
+}
+inline void RegRsp::set_user_id(::google::protobuf::int32 value) {
+  set_has_user_id();
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.RegRsp.user_id)
+}
+
+// -------------------------------------------------------------------
+
 // LoginReq
 
 // optional int32 ver = 1;
 inline bool LoginReq::has_ver() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void LoginReq::set_has_ver() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void LoginReq::clear_has_ver() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void LoginReq::clear_ver() {
   ver_ = 0;
@@ -1986,13 +3492,13 @@ inline void LoginReq::set_ver(::google::protobuf::int32 value) {
 
 // optional int32 mess_type = 2;
 inline bool LoginReq::has_mess_type() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void LoginReq::set_has_mess_type() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void LoginReq::clear_has_mess_type() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void LoginReq::clear_mess_type() {
   mess_type_ = 0;
@@ -2008,39 +3514,81 @@ inline void LoginReq::set_mess_type(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:ssp.LoginReq.mess_type)
 }
 
-// optional int32 user_id = 3;
-inline bool LoginReq::has_user_id() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+// optional string user_name = 3;
+inline bool LoginReq::has_user_name() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void LoginReq::set_has_user_id() {
-  _has_bits_[0] |= 0x00000008u;
+inline void LoginReq::set_has_user_name() {
+  _has_bits_[0] |= 0x00000001u;
 }
-inline void LoginReq::clear_has_user_id() {
-  _has_bits_[0] &= ~0x00000008u;
+inline void LoginReq::clear_has_user_name() {
+  _has_bits_[0] &= ~0x00000001u;
 }
-inline void LoginReq::clear_user_id() {
-  user_id_ = 0;
-  clear_has_user_id();
+inline void LoginReq::clear_user_name() {
+  user_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_user_name();
 }
-inline ::google::protobuf::int32 LoginReq::user_id() const {
-  // @@protoc_insertion_point(field_get:ssp.LoginReq.user_id)
-  return user_id_;
+inline const ::std::string& LoginReq::user_name() const {
+  // @@protoc_insertion_point(field_get:ssp.LoginReq.user_name)
+  return user_name_.GetNoArena();
 }
-inline void LoginReq::set_user_id(::google::protobuf::int32 value) {
-  set_has_user_id();
-  user_id_ = value;
-  // @@protoc_insertion_point(field_set:ssp.LoginReq.user_id)
+inline void LoginReq::set_user_name(const ::std::string& value) {
+  set_has_user_name();
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:ssp.LoginReq.user_name)
+}
+#if LANG_CXX11
+inline void LoginReq::set_user_name(::std::string&& value) {
+  set_has_user_name();
+  user_name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ssp.LoginReq.user_name)
+}
+#endif
+inline void LoginReq::set_user_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_user_name();
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ssp.LoginReq.user_name)
+}
+inline void LoginReq::set_user_name(const char* value, size_t size) {
+  set_has_user_name();
+  user_name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ssp.LoginReq.user_name)
+}
+inline ::std::string* LoginReq::mutable_user_name() {
+  set_has_user_name();
+  // @@protoc_insertion_point(field_mutable:ssp.LoginReq.user_name)
+  return user_name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* LoginReq::release_user_name() {
+  // @@protoc_insertion_point(field_release:ssp.LoginReq.user_name)
+  if (!has_user_name()) {
+    return NULL;
+  }
+  clear_has_user_name();
+  return user_name_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void LoginReq::set_allocated_user_name(::std::string* user_name) {
+  if (user_name != NULL) {
+    set_has_user_name();
+  } else {
+    clear_has_user_name();
+  }
+  user_name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), user_name);
+  // @@protoc_insertion_point(field_set_allocated:ssp.LoginReq.user_name)
 }
 
 // optional string password = 4;
 inline bool LoginReq::has_password() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void LoginReq::set_has_password() {
-  _has_bits_[0] |= 0x00000001u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void LoginReq::clear_has_password() {
-  _has_bits_[0] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void LoginReq::clear_password() {
   password_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -2172,6 +3720,30 @@ inline void LoginRsp::set_ret(::google::protobuf::int32 value) {
   set_has_ret();
   ret_ = value;
   // @@protoc_insertion_point(field_set:ssp.LoginRsp.ret)
+}
+
+// optional int32 user_id = 4;
+inline bool LoginRsp::has_user_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void LoginRsp::set_has_user_id() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void LoginRsp::clear_has_user_id() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void LoginRsp::clear_user_id() {
+  user_id_ = 0;
+  clear_has_user_id();
+}
+inline ::google::protobuf::int32 LoginRsp::user_id() const {
+  // @@protoc_insertion_point(field_get:ssp.LoginRsp.user_id)
+  return user_id_;
+}
+inline void LoginRsp::set_user_id(::google::protobuf::int32 value) {
+  set_has_user_id();
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.LoginRsp.user_id)
 }
 
 // -------------------------------------------------------------------
@@ -3278,9 +4850,553 @@ inline void AddFriendRsp::set_ret(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:ssp.AddFriendRsp.ret)
 }
 
+// -------------------------------------------------------------------
+
+// DelFriendReq
+
+// optional int32 ver = 1;
+inline bool DelFriendReq::has_ver() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DelFriendReq::set_has_ver() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DelFriendReq::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DelFriendReq::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 DelFriendReq::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.DelFriendReq.ver)
+  return ver_;
+}
+inline void DelFriendReq::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelFriendReq.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool DelFriendReq::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DelFriendReq::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DelFriendReq::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DelFriendReq::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 DelFriendReq::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.DelFriendReq.mess_type)
+  return mess_type_;
+}
+inline void DelFriendReq::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelFriendReq.mess_type)
+}
+
+// optional int32 user_id = 3;
+inline bool DelFriendReq::has_user_id() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DelFriendReq::set_has_user_id() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DelFriendReq::clear_has_user_id() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DelFriendReq::clear_user_id() {
+  user_id_ = 0;
+  clear_has_user_id();
+}
+inline ::google::protobuf::int32 DelFriendReq::user_id() const {
+  // @@protoc_insertion_point(field_get:ssp.DelFriendReq.user_id)
+  return user_id_;
+}
+inline void DelFriendReq::set_user_id(::google::protobuf::int32 value) {
+  set_has_user_id();
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelFriendReq.user_id)
+}
+
+// optional int32 other_id = 4;
+inline bool DelFriendReq::has_other_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DelFriendReq::set_has_other_id() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DelFriendReq::clear_has_other_id() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DelFriendReq::clear_other_id() {
+  other_id_ = 0;
+  clear_has_other_id();
+}
+inline ::google::protobuf::int32 DelFriendReq::other_id() const {
+  // @@protoc_insertion_point(field_get:ssp.DelFriendReq.other_id)
+  return other_id_;
+}
+inline void DelFriendReq::set_other_id(::google::protobuf::int32 value) {
+  set_has_other_id();
+  other_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelFriendReq.other_id)
+}
+
+// -------------------------------------------------------------------
+
+// DelFriendRsp
+
+// optional int32 ver = 1;
+inline bool DelFriendRsp::has_ver() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DelFriendRsp::set_has_ver() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DelFriendRsp::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DelFriendRsp::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 DelFriendRsp::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.DelFriendRsp.ver)
+  return ver_;
+}
+inline void DelFriendRsp::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelFriendRsp.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool DelFriendRsp::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DelFriendRsp::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DelFriendRsp::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DelFriendRsp::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 DelFriendRsp::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.DelFriendRsp.mess_type)
+  return mess_type_;
+}
+inline void DelFriendRsp::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelFriendRsp.mess_type)
+}
+
+// optional int32 ret = 3;
+inline bool DelFriendRsp::has_ret() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DelFriendRsp::set_has_ret() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DelFriendRsp::clear_has_ret() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DelFriendRsp::clear_ret() {
+  ret_ = 0;
+  clear_has_ret();
+}
+inline ::google::protobuf::int32 DelFriendRsp::ret() const {
+  // @@protoc_insertion_point(field_get:ssp.DelFriendRsp.ret)
+  return ret_;
+}
+inline void DelFriendRsp::set_ret(::google::protobuf::int32 value) {
+  set_has_ret();
+  ret_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelFriendRsp.ret)
+}
+
+// -------------------------------------------------------------------
+
+// AddBlackReq
+
+// optional int32 ver = 1;
+inline bool AddBlackReq::has_ver() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AddBlackReq::set_has_ver() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void AddBlackReq::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void AddBlackReq::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 AddBlackReq::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.AddBlackReq.ver)
+  return ver_;
+}
+inline void AddBlackReq::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.AddBlackReq.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool AddBlackReq::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void AddBlackReq::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void AddBlackReq::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void AddBlackReq::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 AddBlackReq::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.AddBlackReq.mess_type)
+  return mess_type_;
+}
+inline void AddBlackReq::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.AddBlackReq.mess_type)
+}
+
+// optional int32 user_id = 3;
+inline bool AddBlackReq::has_user_id() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void AddBlackReq::set_has_user_id() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void AddBlackReq::clear_has_user_id() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void AddBlackReq::clear_user_id() {
+  user_id_ = 0;
+  clear_has_user_id();
+}
+inline ::google::protobuf::int32 AddBlackReq::user_id() const {
+  // @@protoc_insertion_point(field_get:ssp.AddBlackReq.user_id)
+  return user_id_;
+}
+inline void AddBlackReq::set_user_id(::google::protobuf::int32 value) {
+  set_has_user_id();
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.AddBlackReq.user_id)
+}
+
+// optional int32 other_id = 4;
+inline bool AddBlackReq::has_other_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void AddBlackReq::set_has_other_id() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void AddBlackReq::clear_has_other_id() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void AddBlackReq::clear_other_id() {
+  other_id_ = 0;
+  clear_has_other_id();
+}
+inline ::google::protobuf::int32 AddBlackReq::other_id() const {
+  // @@protoc_insertion_point(field_get:ssp.AddBlackReq.other_id)
+  return other_id_;
+}
+inline void AddBlackReq::set_other_id(::google::protobuf::int32 value) {
+  set_has_other_id();
+  other_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.AddBlackReq.other_id)
+}
+
+// -------------------------------------------------------------------
+
+// AddBlackRsp
+
+// optional int32 ver = 1;
+inline bool AddBlackRsp::has_ver() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AddBlackRsp::set_has_ver() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void AddBlackRsp::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void AddBlackRsp::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 AddBlackRsp::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.AddBlackRsp.ver)
+  return ver_;
+}
+inline void AddBlackRsp::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.AddBlackRsp.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool AddBlackRsp::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void AddBlackRsp::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void AddBlackRsp::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void AddBlackRsp::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 AddBlackRsp::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.AddBlackRsp.mess_type)
+  return mess_type_;
+}
+inline void AddBlackRsp::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.AddBlackRsp.mess_type)
+}
+
+// optional int32 ret = 3;
+inline bool AddBlackRsp::has_ret() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void AddBlackRsp::set_has_ret() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void AddBlackRsp::clear_has_ret() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void AddBlackRsp::clear_ret() {
+  ret_ = 0;
+  clear_has_ret();
+}
+inline ::google::protobuf::int32 AddBlackRsp::ret() const {
+  // @@protoc_insertion_point(field_get:ssp.AddBlackRsp.ret)
+  return ret_;
+}
+inline void AddBlackRsp::set_ret(::google::protobuf::int32 value) {
+  set_has_ret();
+  ret_ = value;
+  // @@protoc_insertion_point(field_set:ssp.AddBlackRsp.ret)
+}
+
+// -------------------------------------------------------------------
+
+// DelBlackReq
+
+// optional int32 ver = 1;
+inline bool DelBlackReq::has_ver() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DelBlackReq::set_has_ver() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DelBlackReq::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DelBlackReq::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 DelBlackReq::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.DelBlackReq.ver)
+  return ver_;
+}
+inline void DelBlackReq::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelBlackReq.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool DelBlackReq::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DelBlackReq::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DelBlackReq::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DelBlackReq::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 DelBlackReq::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.DelBlackReq.mess_type)
+  return mess_type_;
+}
+inline void DelBlackReq::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelBlackReq.mess_type)
+}
+
+// optional int32 user_id = 3;
+inline bool DelBlackReq::has_user_id() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DelBlackReq::set_has_user_id() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DelBlackReq::clear_has_user_id() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DelBlackReq::clear_user_id() {
+  user_id_ = 0;
+  clear_has_user_id();
+}
+inline ::google::protobuf::int32 DelBlackReq::user_id() const {
+  // @@protoc_insertion_point(field_get:ssp.DelBlackReq.user_id)
+  return user_id_;
+}
+inline void DelBlackReq::set_user_id(::google::protobuf::int32 value) {
+  set_has_user_id();
+  user_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelBlackReq.user_id)
+}
+
+// optional int32 other_id = 4;
+inline bool DelBlackReq::has_other_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DelBlackReq::set_has_other_id() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DelBlackReq::clear_has_other_id() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DelBlackReq::clear_other_id() {
+  other_id_ = 0;
+  clear_has_other_id();
+}
+inline ::google::protobuf::int32 DelBlackReq::other_id() const {
+  // @@protoc_insertion_point(field_get:ssp.DelBlackReq.other_id)
+  return other_id_;
+}
+inline void DelBlackReq::set_other_id(::google::protobuf::int32 value) {
+  set_has_other_id();
+  other_id_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelBlackReq.other_id)
+}
+
+// -------------------------------------------------------------------
+
+// DelBlackRsp
+
+// optional int32 ver = 1;
+inline bool DelBlackRsp::has_ver() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DelBlackRsp::set_has_ver() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DelBlackRsp::clear_has_ver() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DelBlackRsp::clear_ver() {
+  ver_ = 0;
+  clear_has_ver();
+}
+inline ::google::protobuf::int32 DelBlackRsp::ver() const {
+  // @@protoc_insertion_point(field_get:ssp.DelBlackRsp.ver)
+  return ver_;
+}
+inline void DelBlackRsp::set_ver(::google::protobuf::int32 value) {
+  set_has_ver();
+  ver_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelBlackRsp.ver)
+}
+
+// optional int32 mess_type = 2;
+inline bool DelBlackRsp::has_mess_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DelBlackRsp::set_has_mess_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DelBlackRsp::clear_has_mess_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DelBlackRsp::clear_mess_type() {
+  mess_type_ = 0;
+  clear_has_mess_type();
+}
+inline ::google::protobuf::int32 DelBlackRsp::mess_type() const {
+  // @@protoc_insertion_point(field_get:ssp.DelBlackRsp.mess_type)
+  return mess_type_;
+}
+inline void DelBlackRsp::set_mess_type(::google::protobuf::int32 value) {
+  set_has_mess_type();
+  mess_type_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelBlackRsp.mess_type)
+}
+
+// optional int32 ret = 3;
+inline bool DelBlackRsp::has_ret() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DelBlackRsp::set_has_ret() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DelBlackRsp::clear_has_ret() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DelBlackRsp::clear_ret() {
+  ret_ = 0;
+  clear_has_ret();
+}
+inline ::google::protobuf::int32 DelBlackRsp::ret() const {
+  // @@protoc_insertion_point(field_get:ssp.DelBlackRsp.ret)
+  return ret_;
+}
+inline void DelBlackRsp::set_ret(::google::protobuf::int32 value) {
+  set_has_ret();
+  ret_ = value;
+  // @@protoc_insertion_point(field_set:ssp.DelBlackRsp.ret)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -28,6 +28,8 @@ public:
     int CheckBlack(int other_id);
     int AddBlack(int other_id);
     int DeleteBlack(int other_id); 
+
+    int GetFriendUserIdByIndex(int index);
 };
 
 #endif // !__RELATION_INFO_H__

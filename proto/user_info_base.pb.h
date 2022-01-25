@@ -183,6 +183,21 @@ class UserInfoBase : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_nick_name();
   void set_allocated_nick_name(::std::string* nick_name);
 
+  // optional string password = 10;
+  bool has_password() const;
+  void clear_password();
+  static const int kPasswordFieldNumber = 10;
+  const ::std::string& password() const;
+  void set_password(const ::std::string& value);
+  #if LANG_CXX11
+  void set_password(::std::string&& value);
+  #endif
+  void set_password(const char* value);
+  void set_password(const char* value, size_t size);
+  ::std::string* mutable_password();
+  ::std::string* release_password();
+  void set_allocated_password(::std::string* password);
+
   // optional uint32 ver = 1;
   bool has_ver() const;
   void clear_ver();
@@ -252,12 +267,15 @@ class UserInfoBase : public ::google::protobuf::Message /* @@protoc_insertion_po
   void clear_has_last_login_time();
   void set_has_fresh_time();
   void clear_has_fresh_time();
+  void set_has_password();
+  void clear_has_password();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   ::google::protobuf::internal::ArenaStringPtr user_name_;
   ::google::protobuf::internal::ArenaStringPtr nick_name_;
+  ::google::protobuf::internal::ArenaStringPtr password_;
   ::google::protobuf::uint32 ver_;
   ::google::protobuf::uint32 user_id_;
   ::google::protobuf::uint32 reg_time_;
@@ -280,13 +298,13 @@ class UserInfoBase : public ::google::protobuf::Message /* @@protoc_insertion_po
 
 // optional uint32 ver = 1;
 inline bool UserInfoBase::has_ver() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void UserInfoBase::set_has_ver() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void UserInfoBase::clear_has_ver() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void UserInfoBase::clear_ver() {
   ver_ = 0u;
@@ -304,13 +322,13 @@ inline void UserInfoBase::set_ver(::google::protobuf::uint32 value) {
 
 // optional uint32 user_id = 2;
 inline bool UserInfoBase::has_user_id() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void UserInfoBase::set_has_user_id() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void UserInfoBase::clear_has_user_id() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void UserInfoBase::clear_user_id() {
   user_id_ = 0u;
@@ -460,13 +478,13 @@ inline void UserInfoBase::set_allocated_nick_name(::std::string* nick_name) {
 
 // optional uint32 reg_time = 5;
 inline bool UserInfoBase::has_reg_time() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void UserInfoBase::set_has_reg_time() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void UserInfoBase::clear_has_reg_time() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void UserInfoBase::clear_reg_time() {
   reg_time_ = 0u;
@@ -484,13 +502,13 @@ inline void UserInfoBase::set_reg_time(::google::protobuf::uint32 value) {
 
 // optional uint32 from = 6;
 inline bool UserInfoBase::has_from() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void UserInfoBase::set_has_from() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void UserInfoBase::clear_has_from() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void UserInfoBase::clear_from() {
   from_ = 0u;
@@ -508,13 +526,13 @@ inline void UserInfoBase::set_from(::google::protobuf::uint32 value) {
 
 // optional uint32 login_time = 7;
 inline bool UserInfoBase::has_login_time() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void UserInfoBase::set_has_login_time() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void UserInfoBase::clear_has_login_time() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void UserInfoBase::clear_login_time() {
   login_time_ = 0u;
@@ -532,13 +550,13 @@ inline void UserInfoBase::set_login_time(::google::protobuf::uint32 value) {
 
 // optional uint32 last_login_time = 8;
 inline bool UserInfoBase::has_last_login_time() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void UserInfoBase::set_has_last_login_time() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void UserInfoBase::clear_has_last_login_time() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void UserInfoBase::clear_last_login_time() {
   last_login_time_ = 0u;
@@ -556,13 +574,13 @@ inline void UserInfoBase::set_last_login_time(::google::protobuf::uint32 value) 
 
 // optional uint32 fresh_time = 9;
 inline bool UserInfoBase::has_fresh_time() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void UserInfoBase::set_has_fresh_time() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void UserInfoBase::clear_has_fresh_time() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void UserInfoBase::clear_fresh_time() {
   fresh_time_ = 0u;
@@ -576,6 +594,72 @@ inline void UserInfoBase::set_fresh_time(::google::protobuf::uint32 value) {
   set_has_fresh_time();
   fresh_time_ = value;
   // @@protoc_insertion_point(field_set:ssp.UserInfoBase.fresh_time)
+}
+
+// optional string password = 10;
+inline bool UserInfoBase::has_password() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void UserInfoBase::set_has_password() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void UserInfoBase::clear_has_password() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void UserInfoBase::clear_password() {
+  password_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_password();
+}
+inline const ::std::string& UserInfoBase::password() const {
+  // @@protoc_insertion_point(field_get:ssp.UserInfoBase.password)
+  return password_.GetNoArena();
+}
+inline void UserInfoBase::set_password(const ::std::string& value) {
+  set_has_password();
+  password_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:ssp.UserInfoBase.password)
+}
+#if LANG_CXX11
+inline void UserInfoBase::set_password(::std::string&& value) {
+  set_has_password();
+  password_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:ssp.UserInfoBase.password)
+}
+#endif
+inline void UserInfoBase::set_password(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  set_has_password();
+  password_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:ssp.UserInfoBase.password)
+}
+inline void UserInfoBase::set_password(const char* value, size_t size) {
+  set_has_password();
+  password_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:ssp.UserInfoBase.password)
+}
+inline ::std::string* UserInfoBase::mutable_password() {
+  set_has_password();
+  // @@protoc_insertion_point(field_mutable:ssp.UserInfoBase.password)
+  return password_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* UserInfoBase::release_password() {
+  // @@protoc_insertion_point(field_release:ssp.UserInfoBase.password)
+  if (!has_password()) {
+    return NULL;
+  }
+  clear_has_password();
+  return password_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void UserInfoBase::set_allocated_password(::std::string* password) {
+  if (password != NULL) {
+    set_has_password();
+  } else {
+    clear_has_password();
+  }
+  password_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), password);
+  // @@protoc_insertion_point(field_set_allocated:ssp.UserInfoBase.password)
 }
 
 #ifdef __GNUC__

@@ -18,17 +18,19 @@ private:
 private:
     int Init();
 public:
-    void Start();
-    void Proc();
-    void Shutdown();
-    void Restart();
+    int Start();
+    int Proc();
+    int Shutdown();
+    int Restart();
 public:
     int ShowAll();
     UserInfo* GetUser(int user_id);
     int CheckExist(int user_id);
-    int CreateUser(int user_id, char* user_name, char* pswd);
+    int CreateUser(const char* user_name, const char* pswd, int from);
     int DeleteUser(int user_id);
-    int UpdateUserLoginTime(int user_id, char* pswd, int time_now);
+    int LoginCheck(const char* user_name, const char* user_pswd);
+    int UpdateUserLoginTime(int user_id, int time_now);
+    int GetUserIdByUserName(const char* user_name);
 };
 
 #endif // !__USER_MANAGER_H__

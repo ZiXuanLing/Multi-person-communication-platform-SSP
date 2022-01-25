@@ -55,8 +55,8 @@ int UserManager::Init() {
                 pb_user.CopyFrom(row[1]);   /* deserialization */ 
                 // pb_user.user_id();
                 users[i].set_user_id(pb_user.user_id());
-                users[i].set_user_name(pb_user.user_name());
-                users[i].set_nick_name(pb_user.nick_name());
+                users[i].set_user_name(const_cast<char*>(pb_user.user_name().data()));
+                users[i].set_nick_name(const_cast<char*>(pb_user.nick_name().data()));
                 users[i].set_db_flag(0);    /* 0 indicates no deletion */
                 printf("\n");
             }
@@ -67,20 +67,27 @@ int UserManager::Init() {
     printf("User Manager Init\n");
 }
 
-void UserManager::Start() {
+int UserManager::Start() {
     int ret = Init(); /* Initialize exactly at the beginning, such as connecting to the database to load data and so on */
     if (ret != SUCCESS) {
         printf("User Manager Start Fail\n");
         return;
     }
     printf("User Manager Start\n");
+    return SUCCESS;
 }
 
-void UserManager::Proc() {
+int UserManager::Proc() {
+    
     printf("User Manager Proc\n");
+    printf("User Online %d\n", 0); //todo  Perform performance analysis
+    printf("User Online time: %d\n", 0); //todo
+    printf("User reg num: %d\n", 0); //todo
+
+    return SUCCESS;
 }
 
-void UserManager::Shutdown() {
+int UserManager::Shutdown() {
     /* Back to the write operation */
     for (int i = 0; i < user_count_; i ++) {
         /* 1 delete */
@@ -112,10 +119,12 @@ void UserManager::Shutdown() {
         }
     }
     printf("User Manager Shutdown\n");
+    return SUCCESS;
 }
 
-void UserManager::Restart() {
+int UserManager::Restart() {
     printf("User Manager Restart\n");
+    return SUCCESS;
 }
 
 int UserManager::ShowAll() {
@@ -135,18 +144,20 @@ UserInfo* UserManager::GetUser(int user_id) {
     return NULL;
 }
 
-int UserManager::CreateUser(int user_id, char* user_name, char* pswd) {
-    if (GetUser(user_id) != NULL) {
-        return USER_EXIST;
-    }
-    else {
-        if (user_count_ < 10239) {
-            users[user_count_].set_user_id(user_id);
-            users[user_count_].set_user_name(user_name);
-            users[user_count_].set_password(pswd);
-            user_count_ ++;
-            return SUCCESS;
+int UserManager::CreateUser(const char* user_name, const char* pswd, int from) {
+    for (int i = 0; i < user_count_; i ++) {
+        if (strcmp(users[i].user_name(), user_name) == 0) { // Delete the account name
+            return USER_EXIST;
         }
+    }
+    int cur_user_id = 1; // GetVarUserId(); // todo get user_id from tb_var str='user_id'
+    if (user_count_ < 10239) {
+        users[user_count_].set_user_id(cur_user_id);
+        users[user_count_].set_user_name(const_cast<char*>(user_name));
+        users[user_count_].set_password(const_cast<char*>(pswd));
+        users[user_count_].set_from(from);
+        user_count_ ++;
+        return SUCCESS;
     }
     return OK;
 }
@@ -169,19 +180,13 @@ int UserManager::DeleteUser(int user_id) {
  * @param time_now The current time
  * @return int 
  */
-int UserManager::UpdateUserLoginTime(int user_id, char* pswd, int time_now) {
+int UserManager::UpdateUserLoginTime(int user_id, int time_now) {
     UserInfo* user = GetUser(user_id);
     if (user == NULL) {
         printf("USER_NOT_EXIST %d\n", user_id);
         return USER_NOT_EXIST;
     }
-    if (strcmp(user->password(), pswd) == 0) {
-        user->set_login_time(time_now);
-    }
-    else {
-        printf("WRONG_PASSWORD %d Acturel: %s Expect: %s\n", user_id, pswd, user->password());
-        return WRONG_PASSWORD;
-    }
+    user->set_login_time(time_now);
     return SUCCESS;
 }
 
@@ -198,4 +203,40 @@ int UserManager::CheckExist(int user_id) {
         return USER_NOT_EXIST;
     }
     return USER_EXIST;
+}
+
+/**
+ * @brief User login verification
+ * 
+ * @param user_name username for user
+ * @param user_pswd password for user
+ * @return int 
+ */
+int UserManager::LoginCheck(const char* user_name, const char* password) {
+    for (int i = 0; i < user_count_; i ++) {
+        if (strcmp(users[i].user_name(), user_name) == 0) {
+            if (strcmp(users[i].password(), password) == 0) {
+                return SUCCESS;
+            }
+            else {
+                return WRONG_PASSWORD;
+            }
+        }
+    }
+    return USER_NOT_EXIST;
+}
+
+/**
+ * @brief Obtain the user ID from the user account
+ * 
+ * @param user_name 
+ * @return int 
+ */
+int UserManager::GetUserIdByUserName(const char* user_name) {
+    for (int i = 0; i < user_count_; i ++) {
+        if (strcmp(users[i].user_name(), user_name) == 0) {
+            return users[i].user_id();
+        }
+    }
+    return USER_NOT_EXIST;
 }

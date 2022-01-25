@@ -1,11 +1,24 @@
 syntax = "proto2";
 package ssp;
 // Odd numbers are received by the server, and even numbers are sent by the server
+message RegReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 401
+    optional string user_name=3;
+    optional string password=4;
+    optional int32 from=5;
+}
+message RegRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 402
+    optional int32 ret=3;
+    optional int32 user_id=4;
+}
 // Login reply
 message LoginReq {
     optional int32 ver=1;
     optional int32 mess_type=2; // 101
-    optional int32 user_id=3;
+    optional string user_name=3;
     optional string password=4;
 };
 // Login request
@@ -13,6 +26,7 @@ message LoginRsp {
     optional int32 ver=1;
     optional int32 mess_type=2; // 102
     optional int32 ret=3;
+    optional int32 user_id=4;
 };
 // Logout reply
 message LogoutReq {
@@ -77,5 +91,39 @@ message AddFriendReq {
 message AddFriendRsp {
     optional int32 ver=1;
     optional int32 mess_type=2; // 302
+    optional int32 ret=3;
+};
+message DelFriendReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 303
+    optional int32 user_id=3;
+    optional int32 other_id=4;
+};
+message DelFriendRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 304
+    optional int32 ret=3;
+};
+
+message AddBlackReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 305
+    optional int32 user_id=3;
+    optional int32 other_id=4;
+};
+message AddBlackRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 306
+    optional int32 ret=3;
+};
+message DelBlackReq {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 307
+    optional int32 user_id=3;
+    optional int32 other_id=4;
+};
+message DelBlackRsp {
+    optional int32 ver=1;
+    optional int32 mess_type=2; // 308
     optional int32 ret=3;
 };

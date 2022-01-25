@@ -4,7 +4,8 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     DbManager db_svr;
     db_svr.initDb("127.0.0.1", "test", "123456", "ssp");
     // db_svr.execSql("select * from dbtest;");

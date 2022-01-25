@@ -83,11 +83,11 @@ class GetPhotoReqDefaultTypeInternal {
   ::google::protobuf::internal::ExplicitlyConstructed<GetPhotoReq>
       _instance;
 } _GetPhotoReq_default_instance_;
-class GetPhotoRsqDefaultTypeInternal {
+class GetPhotoRspDefaultTypeInternal {
  public:
-  ::google::protobuf::internal::ExplicitlyConstructed<GetPhotoRsq>
+  ::google::protobuf::internal::ExplicitlyConstructed<GetPhotoRsp>
       _instance;
-} _GetPhotoRsq_default_instance_;
+} _GetPhotoRsp_default_instance_;
 class AddFriendReqDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<AddFriendReq>
@@ -299,19 +299,19 @@ static void InitDefaultsGetPhotoReq() {
 ::google::protobuf::internal::SCCInfo<0> scc_info_GetPhotoReq =
     {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsGetPhotoReq}, {}};
 
-static void InitDefaultsGetPhotoRsq() {
+static void InitDefaultsGetPhotoRsp() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::ssp::_GetPhotoRsq_default_instance_;
-    new (ptr) ::ssp::GetPhotoRsq();
+    void* ptr = &::ssp::_GetPhotoRsp_default_instance_;
+    new (ptr) ::ssp::GetPhotoRsp();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::ssp::GetPhotoRsq::InitAsDefaultInstance();
+  ::ssp::GetPhotoRsp::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_GetPhotoRsq =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsGetPhotoRsq}, {
+::google::protobuf::internal::SCCInfo<1> scc_info_GetPhotoRsp =
+    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsGetPhotoRsp}, {
       &protobuf_message_5fdefine_2eproto::scc_info_MessageBase.base,}};
 
 static void InitDefaultsAddFriendReq() {
@@ -439,7 +439,7 @@ void InitDefaults() {
   ::google::protobuf::internal::InitSCC(&scc_info_GetMessageReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GetMessageRsp.base);
   ::google::protobuf::internal::InitSCC(&scc_info_GetPhotoReq.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_GetPhotoRsq.base);
+  ::google::protobuf::internal::InitSCC(&scc_info_GetPhotoRsp.base);
   ::google::protobuf::internal::InitSCC(&scc_info_AddFriendReq.base);
   ::google::protobuf::internal::InitSCC(&scc_info_AddFriendRsp.base);
   ::google::protobuf::internal::InitSCC(&scc_info_DelFriendReq.base);
@@ -603,15 +603,15 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   0,
   1,
   2,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsq, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsq, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsp, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsp, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsq, ver_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsq, mess_type_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsq, ret_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsq, last_message_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsp, ver_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsp, mess_type_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsp, ret_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::ssp::GetPhotoRsp, last_message_),
   1,
   2,
   3,
@@ -726,7 +726,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 115, 123, sizeof(::ssp::GetMessageReq)},
   { 126, 135, sizeof(::ssp::GetMessageRsp)},
   { 139, 147, sizeof(::ssp::GetPhotoReq)},
-  { 150, 159, sizeof(::ssp::GetPhotoRsq)},
+  { 150, 159, sizeof(::ssp::GetPhotoRsp)},
   { 163, 172, sizeof(::ssp::AddFriendReq)},
   { 176, 184, sizeof(::ssp::AddFriendRsp)},
   { 187, 196, sizeof(::ssp::DelFriendReq)},
@@ -750,7 +750,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_GetMessageReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_GetMessageRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_GetPhotoReq_default_instance_),
-  reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_GetPhotoRsq_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_GetPhotoRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_AddFriendReq_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_AddFriendRsp_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&::ssp::_DelFriendReq_default_instance_),
@@ -806,7 +806,7 @@ void AddDescriptorsImpl() {
       "\005\022\013\n\003ret\030\003 \001(\005\022&\n\014message_list\030\004 \003(\0132\020.s"
       "sp.MessageBase\">\n\013GetPhotoReq\022\013\n\003ver\030\001 \001"
       "(\005\022\021\n\tmess_type\030\002 \001(\005\022\017\n\007user_id\030\003 \001(\005\"b"
-      "\n\013GetPhotoRsq\022\013\n\003ver\030\001 \001(\005\022\021\n\tmess_type\030"
+      "\n\013GetPhotoRsp\022\013\n\003ver\030\001 \001(\005\022\021\n\tmess_type\030"
       "\002 \001(\005\022\013\n\003ret\030\003 \001(\005\022&\n\014last_message\030\004 \001(\013"
       "2\020.ssp.MessageBase\"Q\n\014AddFriendReq\022\013\n\003ve"
       "r\030\001 \001(\005\022\021\n\tmess_type\030\002 \001(\005\022\017\n\007user_id\030\003 "
@@ -5106,25 +5106,25 @@ void GetPhotoReq::InternalSwap(GetPhotoReq* other) {
 
 // ===================================================================
 
-void GetPhotoRsq::InitAsDefaultInstance() {
-  ::ssp::_GetPhotoRsq_default_instance_._instance.get_mutable()->last_message_ = const_cast< ::ssp::MessageBase*>(
+void GetPhotoRsp::InitAsDefaultInstance() {
+  ::ssp::_GetPhotoRsp_default_instance_._instance.get_mutable()->last_message_ = const_cast< ::ssp::MessageBase*>(
       ::ssp::MessageBase::internal_default_instance());
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int GetPhotoRsq::kVerFieldNumber;
-const int GetPhotoRsq::kMessTypeFieldNumber;
-const int GetPhotoRsq::kRetFieldNumber;
-const int GetPhotoRsq::kLastMessageFieldNumber;
+const int GetPhotoRsp::kVerFieldNumber;
+const int GetPhotoRsp::kMessTypeFieldNumber;
+const int GetPhotoRsp::kRetFieldNumber;
+const int GetPhotoRsp::kLastMessageFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-GetPhotoRsq::GetPhotoRsq()
+GetPhotoRsp::GetPhotoRsp()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   ::google::protobuf::internal::InitSCC(
-      &protobuf_message_5fdefine_2eproto::scc_info_GetPhotoRsq.base);
+      &protobuf_message_5fdefine_2eproto::scc_info_GetPhotoRsp.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(constructor:ssp.GetPhotoRsp)
 }
-GetPhotoRsq::GetPhotoRsq(const GetPhotoRsq& from)
+GetPhotoRsp::GetPhotoRsp(const GetPhotoRsp& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_) {
@@ -5137,40 +5137,40 @@ GetPhotoRsq::GetPhotoRsq(const GetPhotoRsq& from)
   ::memcpy(&ver_, &from.ver_,
     static_cast<size_t>(reinterpret_cast<char*>(&ret_) -
     reinterpret_cast<char*>(&ver_)) + sizeof(ret_));
-  // @@protoc_insertion_point(copy_constructor:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(copy_constructor:ssp.GetPhotoRsp)
 }
 
-void GetPhotoRsq::SharedCtor() {
+void GetPhotoRsp::SharedCtor() {
   ::memset(&last_message_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&ret_) -
       reinterpret_cast<char*>(&last_message_)) + sizeof(ret_));
 }
 
-GetPhotoRsq::~GetPhotoRsq() {
-  // @@protoc_insertion_point(destructor:ssp.GetPhotoRsq)
+GetPhotoRsp::~GetPhotoRsp() {
+  // @@protoc_insertion_point(destructor:ssp.GetPhotoRsp)
   SharedDtor();
 }
 
-void GetPhotoRsq::SharedDtor() {
+void GetPhotoRsp::SharedDtor() {
   if (this != internal_default_instance()) delete last_message_;
 }
 
-void GetPhotoRsq::SetCachedSize(int size) const {
+void GetPhotoRsp::SetCachedSize(int size) const {
   _cached_size_.Set(size);
 }
-const ::google::protobuf::Descriptor* GetPhotoRsq::descriptor() {
+const ::google::protobuf::Descriptor* GetPhotoRsp::descriptor() {
   ::protobuf_message_5fdefine_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_message_5fdefine_2eproto::file_level_metadata[kIndexInFileMessages].descriptor;
 }
 
-const GetPhotoRsq& GetPhotoRsq::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_message_5fdefine_2eproto::scc_info_GetPhotoRsq.base);
+const GetPhotoRsp& GetPhotoRsp::default_instance() {
+  ::google::protobuf::internal::InitSCC(&protobuf_message_5fdefine_2eproto::scc_info_GetPhotoRsp.base);
   return *internal_default_instance();
 }
 
 
-void GetPhotoRsq::Clear() {
-// @@protoc_insertion_point(message_clear_start:ssp.GetPhotoRsq)
+void GetPhotoRsp::Clear() {
+// @@protoc_insertion_point(message_clear_start:ssp.GetPhotoRsp)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -5189,11 +5189,11 @@ void GetPhotoRsq::Clear() {
   _internal_metadata_.Clear();
 }
 
-bool GetPhotoRsq::MergePartialFromCodedStream(
+bool GetPhotoRsp::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(parse_start:ssp.GetPhotoRsp)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -5265,17 +5265,17 @@ bool GetPhotoRsq::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(parse_success:ssp.GetPhotoRsp)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(parse_failure:ssp.GetPhotoRsp)
   return false;
 #undef DO_
 }
 
-void GetPhotoRsq::SerializeWithCachedSizes(
+void GetPhotoRsp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(serialize_start:ssp.GetPhotoRsp)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -5305,13 +5305,13 @@ void GetPhotoRsq::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(serialize_end:ssp.GetPhotoRsp)
 }
 
-::google::protobuf::uint8* GetPhotoRsq::InternalSerializeWithCachedSizesToArray(
+::google::protobuf::uint8* GetPhotoRsp::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(serialize_to_array_start:ssp.GetPhotoRsp)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -5342,12 +5342,12 @@ void GetPhotoRsq::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(serialize_to_array_end:ssp.GetPhotoRsp)
   return target;
 }
 
-size_t GetPhotoRsq::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:ssp.GetPhotoRsq)
+size_t GetPhotoRsp::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:ssp.GetPhotoRsp)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -5390,23 +5390,23 @@ size_t GetPhotoRsq::ByteSizeLong() const {
   return total_size;
 }
 
-void GetPhotoRsq::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:ssp.GetPhotoRsq)
+void GetPhotoRsp::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:ssp.GetPhotoRsp)
   GOOGLE_DCHECK_NE(&from, this);
-  const GetPhotoRsq* source =
-      ::google::protobuf::internal::DynamicCastToGenerated<const GetPhotoRsq>(
+  const GetPhotoRsp* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const GetPhotoRsp>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:ssp.GetPhotoRsp)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:ssp.GetPhotoRsq)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:ssp.GetPhotoRsp)
     MergeFrom(*source);
   }
 }
 
-void GetPhotoRsq::MergeFrom(const GetPhotoRsq& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:ssp.GetPhotoRsq)
+void GetPhotoRsp::MergeFrom(const GetPhotoRsp& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:ssp.GetPhotoRsp)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
@@ -5430,29 +5430,29 @@ void GetPhotoRsq::MergeFrom(const GetPhotoRsq& from) {
   }
 }
 
-void GetPhotoRsq::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:ssp.GetPhotoRsq)
+void GetPhotoRsp::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:ssp.GetPhotoRsp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GetPhotoRsq::CopyFrom(const GetPhotoRsq& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:ssp.GetPhotoRsq)
+void GetPhotoRsp::CopyFrom(const GetPhotoRsp& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:ssp.GetPhotoRsp)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GetPhotoRsq::IsInitialized() const {
+bool GetPhotoRsp::IsInitialized() const {
   return true;
 }
 
-void GetPhotoRsq::Swap(GetPhotoRsq* other) {
+void GetPhotoRsp::Swap(GetPhotoRsp* other) {
   if (other == this) return;
   InternalSwap(other);
 }
-void GetPhotoRsq::InternalSwap(GetPhotoRsq* other) {
+void GetPhotoRsp::InternalSwap(GetPhotoRsp* other) {
   using std::swap;
   swap(last_message_, other->last_message_);
   swap(ver_, other->ver_);
@@ -5462,7 +5462,7 @@ void GetPhotoRsq::InternalSwap(GetPhotoRsq* other) {
   _internal_metadata_.Swap(&other->_internal_metadata_);
 }
 
-::google::protobuf::Metadata GetPhotoRsq::GetMetadata() const {
+::google::protobuf::Metadata GetPhotoRsp::GetMetadata() const {
   protobuf_message_5fdefine_2eproto::protobuf_AssignDescriptorsOnce();
   return ::protobuf_message_5fdefine_2eproto::file_level_metadata[kIndexInFileMessages];
 }
@@ -8172,8 +8172,8 @@ template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ssp::GetMessageRsp* Arena::Creat
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ssp::GetPhotoReq* Arena::CreateMaybeMessage< ::ssp::GetPhotoReq >(Arena* arena) {
   return Arena::CreateInternal< ::ssp::GetPhotoReq >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ssp::GetPhotoRsq* Arena::CreateMaybeMessage< ::ssp::GetPhotoRsq >(Arena* arena) {
-  return Arena::CreateInternal< ::ssp::GetPhotoRsq >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ssp::GetPhotoRsp* Arena::CreateMaybeMessage< ::ssp::GetPhotoRsp >(Arena* arena) {
+  return Arena::CreateInternal< ::ssp::GetPhotoRsp >(arena);
 }
 template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::ssp::AddFriendReq* Arena::CreateMaybeMessage< ::ssp::AddFriendReq >(Arena* arena) {
   return Arena::CreateInternal< ::ssp::AddFriendReq >(arena);

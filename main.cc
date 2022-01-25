@@ -94,6 +94,7 @@ int main() {
                     int user_id = user_svr.GetUserIdByUserName(loginReq.user_name().data());
                     user_svr.UpdateUserLoginTime(user_id, now);
                     loginRsp.set_user_id(user_id);
+                    loginRsp.set_ret(ret);
                 }
                 else {
                     loginRsp.set_ret(ret);
@@ -147,7 +148,6 @@ int main() {
                     ret = mess_svr.PushMessage(message);
                     RelationInfo* rela_info = rela_svr.GetRelation(publishReq.user_id());
                     for (int i = 0; i < rela_info->friend_count(); i ++) {
-                        // update each friend photo
                         photo_svr.UpdatePhoto(
                             rela_info->GetFriendUserIdByIndex(i), 
                             publishReq.user_id(), 
@@ -155,13 +155,110 @@ int main() {
                             message.message_id()
                         );
                     }
-                    publishRsp.set_ret(ret);
+                    publishRsp.set_ret(SUCCESS);
                 }
                 else {
                     publishRsp.set_ret(ret);
                 }
+                break;
             }
-
+            case GET_PHOTO_REQ: {
+                ssp::GetPhotoReq getPhotoReq;
+                ssp::GetPhotoRsp getPhotoRsp;
+                getPhotoReq.ParseFromArray(buffer + 3, 10240);
+                ret = user_svr.CheckExist(getPhotoReq.user_id());
+                if (ret == USER_EXIST) {
+                    PhotoInfo* photo = photo_svr.GetPhoto(getPhotoReq.user_id());
+                    if (photo != NULL) {
+                        MessageInfo* message = mess_svr.GetMessage(photo->last_publish_message_id()); 
+                        if (message != NULL) {
+                            getPhotoRsp.mutable_last_message()->set_message_id(message->message_id());
+                            getPhotoRsp.mutable_last_message()->set_content(message->content());
+                            getPhotoRsp.mutable_last_message()->set_publisher(photo->last_publisher());
+                            getPhotoRsp.mutable_last_message()->set_publish_time(photo->last_publish_time());  
+                            getPhotoRsp.set_ret(SUCCESS);
+                        }
+                        else {
+                            getPhotoRsp.set_ret(MESSAGE_NOT_EXIST);
+                        }
+                    } 
+                    else {
+                        getPhotoRsp.set_ret(PHOTO_NOT_EXIST);
+                    }    
+                }
+                else {
+                    getPhotoRsp.set_ret(ret);
+                }
+                break;
+            }
+            case GET_MESSAGE_LIST_REQ: {
+                ssp::GetMessageReq getMessageReq;
+                ssp::GetMessageRsp getMessageRsp;
+                getMessageReq.ParseFromArray(buffer + 3, 10240);
+                ret = user_svr.CheckExist(getMessageReq.user_id());
+                if (ret == USER_EXIST) {
+                    user_svr.UpdateUserFreshTime(getMessageReq.user_id(), now);
+                    getMessageRsp.set_ret(SUCCESS);
+                }
+                else {
+                    getMessageRsp.set_ret(ret);
+                }
+                break;
+            }
+            case DEL_FRIEND_REQ: {
+                ssp::DelFriendReq delFriendReq;
+                ssp::DelFriendRsp delFriendRsp;
+                delFriendReq.ParseFromArray(buffer + 3, 10240);
+                ret = user_svr.CheckExist(delFriendReq.user_id());
+                if (ret == USER_EXIST) {
+                    ret = user_svr.CheckExist(delFriendReq.other_id());
+                    if (ret == USER_EXIST) {
+                        ret = rela_svr.DeleteFriend(delFriendReq.user_id(), delFriendReq.other_id());
+                        delFriendRsp.set_ret(ret);
+                    }
+                    else {
+                        delFriendRsp.set_ret(ret);
+                    }
+                }
+                else {
+                    delFriendRsp.set_ret(ret);
+                }
+                break;
+            }
+            case DEL_BLACK_REQ: {
+                ssp::DelBlackReq delBlackReq;
+                ssp::DelBlackRsp delBlackRsp;
+                delBlackReq.ParseFromArray(buffer + 3, 10240);
+                ret = user_svr.CheckExist(delBlackReq.user_id());
+                if (ret == USER_EXIST) {
+                    ret = user_svr.CheckExist(delBlackReq.other_id());
+                    if (ret == USER_EXIST) {
+                        ret = rela_svr.DeleteBlack(delBlackReq.user_id(), delBlackReq.other_id());
+                        delBlackRsp.set_ret(ret);
+                    }
+                    else {
+                        delBlackRsp.set_ret(ret);
+                    }
+                }
+                else {
+                    delBlackRsp.set_ret(ret);
+                }
+                break;
+            }
+            case LOGOUT_REQ: {
+                ssp::LogoutReq logoutReq;
+                ssp::LogoutRsp logoutRsp;
+                logoutReq.ParseFromArray(buffer + 3, 10240);
+                ret = user_svr.CheckExist(logoutReq.user_id());
+                if (ret == USER_EXIST) {
+                    user_svr.UserLogout(logoutReq.user_id(), now);
+                    logoutRsp.set_ret(ret);
+                }
+                else {
+                    logoutRsp.set_ret(ret);
+                }
+                break;
+            }
             default:
                 break;
         }

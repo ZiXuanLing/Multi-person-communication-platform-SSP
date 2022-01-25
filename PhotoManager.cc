@@ -1,17 +1,22 @@
 #include "PhotoManager.h"
 
-PhotoInfo* PhotoManager::GetPhoto(int user_id) {
-    for (int i = 0; i < photo_count_; i ++) {
-        if (photos_[i].user_id() == user_id) {
+PhotoInfo *PhotoManager::GetPhoto(int user_id)
+{
+    for (int i = 0; i < photo_count_; i++)
+    {
+        if (photos_[i].user_id() == user_id)
+        {
             return &photos_[i];
         }
     }
     return NULL;
 }
 
-int PhotoManager::UpdatePhoto(int user_id, int publisher_id, int publish_time, int publish_message_id) {
-    PhotoInfo* photo = GetPhoto(user_id);
-    if (photo == NULL) {
+int PhotoManager::UpdatePhoto(int user_id, int publisher_id, int publish_time, int publish_message_id)
+{
+    PhotoInfo *photo = GetPhoto(user_id);
+    if (photo == NULL)
+    {
         return PHOTO_NOT_EXIST;
     }
     photo->set_user_id(user_id); // not need

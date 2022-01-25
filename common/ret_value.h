@@ -4,14 +4,14 @@
 /**
  * Common macros are defined
  * interval isolation is performed to quickly find errors later
-*/
+ */
 
 #define OK 0
 #define SUCCESS 0
 #define ERROR -1
 
 #define USER_EXIST -100
-#define USER_NOT_EXIST -101   // User does not exist
+#define USER_NOT_EXIST -101 // User does not exist
 #define USER_NEED_DELETE -102
 #define WRONG_PASSWORD -103
 
@@ -39,7 +39,5 @@
 #define FLAG_INIT 0
 #define FLAG_DELETE 1
 #define FLAG_UPDATE 2
-
-
 
 #endif // !__ERR_DEFINE_H__

@@ -75,7 +75,7 @@ message GetPhotoReq {
     optional int32 mess_type=2; // 205
     optional int32 user_id=3;
 };
-message GetPhotoRsq {
+message GetPhotoRsp {
     optional int32 ver=1;
     optional int32 mess_type=2; // 206
     optional int32 ret=3;

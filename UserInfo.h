@@ -10,10 +10,11 @@
 
 using namespace ssp;
 
-typedef struct UserInfo {
+typedef struct UserInfo
+{
 public:
-    void FromPb(ssp::UserInfoBase& user);
-    void ToPb(ssp::UserInfoBase& user);
+    void FromPb(ssp::UserInfoBase &user);
+    void ToPb(ssp::UserInfoBase &user);
 
     GETSETVAR(int, user_id)
     GETSETSTR(256, user_name)
@@ -25,6 +26,7 @@ public:
     GETSETVAR(int, fresh_time)
     GETSETSTR(256, password)
     GETSETVAR(int, db_flag)
+    GETSETVAR(int, logout_time)
     // password
 } UserInfo;
 

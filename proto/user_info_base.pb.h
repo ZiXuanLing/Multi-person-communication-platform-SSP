@@ -247,6 +247,13 @@ class UserInfoBase : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint32 fresh_time() const;
   void set_fresh_time(::google::protobuf::uint32 value);
 
+  // optional uint32 logout_time = 11;
+  bool has_logout_time() const;
+  void clear_logout_time();
+  static const int kLogoutTimeFieldNumber = 11;
+  ::google::protobuf::uint32 logout_time() const;
+  void set_logout_time(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:ssp.UserInfoBase)
  private:
   void set_has_ver();
@@ -269,6 +276,8 @@ class UserInfoBase : public ::google::protobuf::Message /* @@protoc_insertion_po
   void clear_has_fresh_time();
   void set_has_password();
   void clear_has_password();
+  void set_has_logout_time();
+  void clear_has_logout_time();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
@@ -283,6 +292,7 @@ class UserInfoBase : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint32 login_time_;
   ::google::protobuf::uint32 last_login_time_;
   ::google::protobuf::uint32 fresh_time_;
+  ::google::protobuf::uint32 logout_time_;
   friend struct ::protobuf_user_5finfo_5fbase_2eproto::TableStruct;
 };
 // ===================================================================
@@ -660,6 +670,30 @@ inline void UserInfoBase::set_allocated_password(::std::string* password) {
   }
   password_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), password);
   // @@protoc_insertion_point(field_set_allocated:ssp.UserInfoBase.password)
+}
+
+// optional uint32 logout_time = 11;
+inline bool UserInfoBase::has_logout_time() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void UserInfoBase::set_has_logout_time() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void UserInfoBase::clear_has_logout_time() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void UserInfoBase::clear_logout_time() {
+  logout_time_ = 0u;
+  clear_has_logout_time();
+}
+inline ::google::protobuf::uint32 UserInfoBase::logout_time() const {
+  // @@protoc_insertion_point(field_get:ssp.UserInfoBase.logout_time)
+  return logout_time_;
+}
+inline void UserInfoBase::set_logout_time(::google::protobuf::uint32 value) {
+  set_has_logout_time();
+  logout_time_ = value;
+  // @@protoc_insertion_point(field_set:ssp.UserInfoBase.logout_time)
 }
 
 #ifdef __GNUC__

@@ -6,7 +6,8 @@
 
 #include "common/ret_value.h"
 
-class PhotoManager {
+class PhotoManager
+{
 private:
     PhotoInfo photos_[10240];
     GETSETVAR(int, photo_count)
@@ -15,10 +16,10 @@ public:
     void Proc();
     void Shutdown();
     void Restart();
-public:
-    PhotoInfo* GetPhoto(int user_id);
-    int UpdatePhoto(int user_id, int publisher_id, int publish_time, int publish_message_id);
 
+public:
+    PhotoInfo *GetPhoto(int user_id);
+    int UpdatePhoto(int user_id, int publisher_id, int publish_time, int publish_message_id);
 };
 
 #endif // !__PHOTO_MANAGER_H__

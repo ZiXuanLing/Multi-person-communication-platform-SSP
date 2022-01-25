@@ -8,10 +8,12 @@
 
 using namespace ssp;
 
-class PhotoInfo {
+class PhotoInfo
+{
 public:
-    void FromPb(ssp::PhotoInfoBase& photo);
-    void ToPb(ssp::PhotoInfoBase& photo);
+    void FromPb(ssp::PhotoInfoBase &photo);
+    void ToPb(ssp::PhotoInfoBase &photo);
+
 private:
     GETSETVAR(int, user_id);
     GETSETVAR(int, last_publisher);

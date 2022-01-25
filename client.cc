@@ -17,9 +17,11 @@ char psssword[] = "hank1234";
 char buffer[10244];
 
 char data[10244];
-int SetMessType(const char* mess_type) {
+int SetMessType(const char *mess_type)
+{
     int len = strlen(mess_type);
-    if (len != 3) {
+    if (len != 3)
+    {
         return -1;
     }
     /* Reserve three bytes of space for identification */
@@ -29,14 +31,17 @@ int SetMessType(const char* mess_type) {
 
     return 0;
 }
-int GetMessType() {
+int GetMessType()
+{
     int len = strlen(buffer);
-    if (len != 3) {
+    if (len != 3)
+    {
         return -1;
     }
     return ((buffer[0] - '0') * 100 + (buffer[1] - '0') * 10 + buffer[2] - '0');
 }
-int main() {
+int main()
+{
     // login
     ssp::UserInfoBase pb_user;
     // pb_user.set_user_id();
@@ -51,30 +56,34 @@ int main() {
     serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     serv_addr.sin_port = htons(8999);
 
-    connect(sock, (struct sockaddr*) &serv_addr, sizeof(serv_addr));
+    connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
     int times = 10000;
     char data[10240];
     int ret = SetMessType("101");
-    if (ret != 0) {
+    if (ret != 0)
+    {
         return -1;
     }
-    pb_user.SerializeToArray(data + 3, 10240);  /* Serialized data */
+    pb_user.SerializeToArray(data + 3, 10240); /* Serialized data */
     send(sock, data, sizeof(data), 0);
-    while (times--) {
+    while (times--)
+    {
         int ret = recv(sock, buffer, sizeof(buffer), 0);
-        if (ret < 0) {
+        if (ret < 0)
+        {
             continue;
         }
         int mess_type = GetMessType();
-        if (mess_type < 0) {
+        if (mess_type < 0)
+        {
             return -1;
         }
         ssp::LoginRsp loginRsp;
-        switch (mess_type) {
-            case LOGIN_RSP:
-                loginRsp.ParseFromArray(buffer + 3, 10240);
-                break;
-            
+        switch (mess_type)
+        {
+        case LOGIN_RSP:
+            loginRsp.ParseFromArray(buffer + 3, 10240);
+            break;
         }
     }
     return 0;

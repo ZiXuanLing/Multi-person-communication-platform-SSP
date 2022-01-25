@@ -4,60 +4,70 @@
 
 #include <stdio.h>
 
-int str2int(char* str) {
+int str2int(char *str)
+{
     int ret = 0;
     int len = strlen(str);
-    for (int i = 0; i < len; i ++) {
+    for (int i = 0; i < len; i++)
+    {
         ret = ret * 10 + (str[i] - '0');
     }
     return ret;
 }
 
-int UserManager::Init() {
+int UserManager::Init()
+{
     set_user_count(0);
-    conn = mysql_init(NULL);   
-    if (conn == NULL) {
+    conn = mysql_init(NULL);
+    if (conn == NULL)
+    {
         return DB_CONN_INIT_FAIL;
     }
-    conn = mysql_real_connect(conn, 
-        "127.0.0.1", 
-        "test", 
-        "123456", 
-        "ssp",
-        0,
-        NULL,
-        0
-    );
-    if (conn == NULL) {
+    conn = mysql_real_connect(conn,
+                              "127.0.0.1",
+                              "test",
+                              "123456",
+                              "ssp",
+                              0,
+                              NULL,
+                              0);
+    if (conn == NULL)
+    {
         return DB_CONN_CONNECT_FAIL;
-    } 
-    if (mysql_query(conn, "select * from db_user;")) {
+    }
+    if (mysql_query(conn, "select * from db_user;"))
+    {
         printf("select fail: %s \n", mysql_error(conn));
         return DB_QUERY_FAIL;
     }
-    else {
+    else
+    {
         result = mysql_use_result(conn);
-        if (result) {
+        if (result)
+        {
             int num_fields_1 = mysql_num_fields(result); // row
-            int num_fields_2 = mysql_field_count(conn); // The number of users
+            int num_fields_2 = mysql_field_count(conn);  // The number of users
             // printf("num_fields_1 %d, num_fields_2 %d\n", num_fields_1, num_fields_2);
-            for (int i = 0; i < num_fields_2; i ++) {   // Read data by row
+            for (int i = 0; i < num_fields_2; i++)
+            { // Read data by row
                 row = mysql_fetch_row(result);
-                if (row == NULL) {
+                if (row == NULL)
+                {
                     break;
                 }
-                for (int j = 0; j < num_fields_1; j ++) {
+                for (int j = 0; j < num_fields_1; j++)
+                {
                     printf("%s\t", row[j]);
                 }
                 // users[i].set_user_id(str2int(row[0]));
                 // users[i].set_user_name()
                 ssp::UserInfoBase pb_user;
-                pb_user.CopyFrom(row[1]);   /* deserialization */ 
+                pb_user.CopyFrom(row[1]); /* deserialization */
                 // pb_user.user_id();
                 users[i].set_user_id(pb_user.user_id());
-                users[i].set_user_name(const_cast<char*>(pb_user.user_name().data()));
-                users[i].set_nick_name(const_cast<char*>(pb_user.nick_name().data()));
-                users[i].set_db_flag(0);    /* 0 indicates no deletion */
+                users[i].set_user_name(const_cast<char *>(pb_user.user_name().data()));
+                users[i].set_nick_name(const_cast<char *>(pb_user.nick_name().data()));
+                users[i].set_db_flag(0); /* 0 indicates no deletion */
                 printf("\n");
             }
             set_user_count(num_fields_2);
@@ -67,9 +77,11 @@ int UserManager::Init() {
     printf("User Manager Init\n");
 }
 
-int UserManager::Start() {
+int UserManager::Start()
+{
     int ret = Init(); /* Initialize exactly at the beginning, such as connecting to the database to load data and so on */
-    if (ret != SUCCESS) {
+    if (ret != SUCCESS)
+    {
         printf("User Manager Start Fail\n");
         return;
     }
@@ -77,28 +89,34 @@ int UserManager::Start() {
     return SUCCESS;
 }
 
-int UserManager::Proc() {
-    
+int UserManager::Proc()
+{
+
     printf("User Manager Proc\n");
-    printf("User Online %d\n", 0); //todo  Perform performance analysis
-    printf("User Online time: %d\n", 0); //todo
-    printf("User reg num: %d\n", 0); //todo
+    printf("User Online %d\n", 0);       // todo  Perform performance analysis
+    printf("User Online time: %d\n", 0); // todo
+    printf("User reg num: %d\n", 0);     // todo
 
     return SUCCESS;
 }
 
-int UserManager::Shutdown() {
+int UserManager::Shutdown()
+{
     /* Back to the write operation */
-    for (int i = 0; i < user_count_; i ++) {
+    for (int i = 0; i < user_count_; i++)
+    {
         /* 1 delete */
-        if (users[i].db_flag() == FLAG_DELETE) {
+        if (users[i].db_flag() == FLAG_DELETE)
+        {
             string deleSql = "delete from db_user where id=" + users[i].user_id() + ';';
-            if (mysql_query(conn, deleSql.c_str())) {
+            if (mysql_query(conn, deleSql.c_str()))
+            {
                 printf("delete fail: %s \n", mysql_error(conn));
             }
         }
         /* 2 update */
-        if (users[i].db_flag() == FLAG_UPDATE) {
+        if (users[i].db_flag() == FLAG_UPDATE)
+        {
             ssp::UserInfoBase pb_user;
             pb_user.set_user_id(users[i].user_id());
             pb_user.set_user_name(users[i].user_name());
@@ -112,8 +130,9 @@ int UserManager::Shutdown() {
             // db_flag
             char data[10240];
             pb_user.SerializeToArray(data, 10240); /* Write back to the database */
-            string updateSql = "update tb_user set str='" + string(data) + "' where id=" + pb_user.user_id() + ";";
-            if (mysql_query(conn, updateSql.c_str())) {
+            string updateSql = "update tb_user set str='" + string(data) + "' where id=" + (const char *)pb_user.user_id() + ";";
+            if (mysql_query(conn, updateSql.c_str()))
+            {
                 printf("update fail: %s \n", mysql_error(conn));
             }
         }
@@ -122,49 +141,73 @@ int UserManager::Shutdown() {
     return SUCCESS;
 }
 
-int UserManager::Restart() {
+int UserManager::Restart()
+{
     printf("User Manager Restart\n");
     return SUCCESS;
 }
 
-int UserManager::ShowAll() {
+int UserManager::ShowAll()
+{
     printf("=====================================\n");
-    for (int i = 0; i < user_count_; i ++) {
+    for (int i = 0; i < user_count_; i++)
+    {
         printf("| %d | %s | %s | \n", users[i].user_id(), users[i].user_name(), users[i].password());
     }
     printf("=====================================\n");
 }
 
-UserInfo* UserManager::GetUser(int user_id) {
-    for (int i = 0; i < user_count_; i ++) {
-        if (users[i].user_id() == user_id) {
+UserInfo *UserManager::GetUser(int user_id)
+{
+    for (int i = 0; i < user_count_; i++)
+    {
+        if (users[i].user_id() == user_id)
+        {
             return &users[i];
         }
     }
     return NULL;
 }
 
-int UserManager::CreateUser(const char* user_name, const char* pswd, int from) {
-    for (int i = 0; i < user_count_; i ++) {
-        if (strcmp(users[i].user_name(), user_name) == 0) { // Delete the account name
+
+/**
+ * @brief Create user information on the server
+ * 
+ * @param user_name username
+ * @param pswd password
+ * @param from Registered source
+ * @param time_now Now the server time
+ * @return int 
+ */
+int UserManager::CreateUser(const char *user_name, const char *pswd, int from, int time_now)
+{
+    for (int i = 0; i < user_count_; i++)
+    {
+        if (strcmp(users[i].user_name(), user_name) == 0)
+        { // Delete the account name
             return USER_EXIST;
         }
     }
     int cur_user_id = 1; // GetVarUserId(); // todo get user_id from tb_var str='user_id'
-    if (user_count_ < 10239) {
+    if (user_count_ < 10239)
+    {
         users[user_count_].set_user_id(cur_user_id);
-        users[user_count_].set_user_name(const_cast<char*>(user_name));
-        users[user_count_].set_password(const_cast<char*>(pswd));
+        users[user_count_].set_user_name(const_cast<char *>(user_name));
+        users[user_count_].set_password(const_cast<char *>(pswd));
         users[user_count_].set_from(from);
-        user_count_ ++;
+        users[user_count_].set_reg_time(time_now);
+        user_count_++;
         return SUCCESS;
     }
     return OK;
 }
 
-int UserManager::DeleteUser(int user_id) {
-    for (int i = 0; i < user_count_; i ++) {
-        if (users[i].user_id() == user_id) {
+int UserManager::DeleteUser(int user_id)
+{
+    for (int i = 0; i < user_count_; i++)
+    {
+        if (users[i].user_id() == user_id)
+        {
             printf("USER EXIST %d %s\n", users[i].user_id(), users[i].user_name());
             users[i].set_db_flag(FLAG_DELETE);
             return USER_EXIST;
@@ -175,14 +218,16 @@ int UserManager::DeleteUser(int user_id) {
 
 /**
  * @brief Update the login time
- * 
- * @param user_id 
+ *
+ * @param user_id
  * @param time_now The current time
- * @return int 
+ * @return int
  */
-int UserManager::UpdateUserLoginTime(int user_id, int time_now) {
-    UserInfo* user = GetUser(user_id);
-    if (user == NULL) {
+int UserManager::UpdateUserLoginTime(int user_id, int time_now)
+{
+    UserInfo *user = GetUser(user_id);
+    if (user == NULL)
+    {
         printf("USER_NOT_EXIST %d\n", user_id);
         return USER_NOT_EXIST;
     }
@@ -192,13 +237,15 @@ int UserManager::UpdateUserLoginTime(int user_id, int time_now) {
 
 /**
  * @brief Check whether the user exists
- * 
- * @param user_id 
- * @return int 
+ *
+ * @param user_id
+ * @return int
  */
-int UserManager::CheckExist(int user_id) {
-    UserInfo* user = GetUser(user_id);
-    if (user == NULL) {
+int UserManager::CheckExist(int user_id)
+{
+    UserInfo *user = GetUser(user_id);
+    if (user == NULL)
+    {
         printf("USER_NOT_EXIST %d\n", user_id);
         return USER_NOT_EXIST;
     }
@@ -207,18 +254,23 @@ int UserManager::CheckExist(int user_id) {
 
 /**
  * @brief User login verification
- * 
+ *
  * @param user_name username for user
  * @param user_pswd password for user
- * @return int 
+ * @return int
  */
-int UserManager::LoginCheck(const char* user_name, const char* password) {
-    for (int i = 0; i < user_count_; i ++) {
-        if (strcmp(users[i].user_name(), user_name) == 0) {
-            if (strcmp(users[i].password(), password) == 0) {
+int UserManager::LoginCheck(const char *user_name, const char *password)
+{
+    for (int i = 0; i < user_count_; i++)
+    {
+        if (strcmp(users[i].user_name(), user_name) == 0)
+        {
+            if (strcmp(users[i].password(), password) == 0)
+            {
                 return SUCCESS;
             }
-            else {
+            else
+            {
                 return WRONG_PASSWORD;
             }
         }
@@ -228,15 +280,53 @@ int UserManager::LoginCheck(const char* user_name, const char* password) {
 
 /**
  * @brief Obtain the user ID from the user account
- * 
- * @param user_name 
- * @return int 
+ *
+ * @param user_name
+ * @return int
  */
-int UserManager::GetUserIdByUserName(const char* user_name) {
-    for (int i = 0; i < user_count_; i ++) {
-        if (strcmp(users[i].user_name(), user_name) == 0) {
+int UserManager::GetUserIdByUserName(const char *user_name)
+{
+    for (int i = 0; i < user_count_; i++)
+    {
+        if (strcmp(users[i].user_name(), user_name) == 0)
+        {
             return users[i].user_id();
         }
     }
     return USER_NOT_EXIST;
+}
+
+/**
+ * @brief Exit the user state handler
+ *
+ * @param user_id
+ * @return int
+ */
+int UserManager::UserLogout(int user_id, int now)
+{
+    UserInfo *user = GetUser(user_id);
+    if (user == NULL)
+    {
+        return USER_NOT_EXIST;
+    }
+    user->set_logout_time(now);
+    return SUCCESS;
+}
+
+/**
+ * @brief Refresh User refresh time
+ * 
+ * @param user_id 
+ * @param now 
+ * @return int 
+ */
+int UserManager::UpdateUserFreshTime(int user_id, int time_now)
+{
+    UserInfo *user = GetUser(user_id);
+    if (user == NULL)
+    {
+        return USER_NOT_EXIST;
+    }
+    user->set_fresh_time(time_now);
+    return SUCCESS;
 }

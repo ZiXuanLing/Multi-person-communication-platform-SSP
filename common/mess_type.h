@@ -24,7 +24,7 @@
 #define ADD_BLACK_REQ 305
 #define ADD_BLACK_RSP 306
 #define DEL_BLACK_REQ 307
-#define DEL_BLACK_REQ 308
+#define DEL_BLACK_RSP 308
 
 #define REG_REQ 401
 #define REG_RSP 402

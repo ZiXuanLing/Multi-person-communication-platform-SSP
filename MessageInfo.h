@@ -4,7 +4,7 @@
 
 #include "common/macro.h"
 
-#include "proto/MessageInfoBase.pb.h"
+#include "proto/message_info_base.pb.h"
 
 #include <string.h>
 

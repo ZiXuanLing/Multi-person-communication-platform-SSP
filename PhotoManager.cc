@@ -1,5 +1,25 @@
 #include "PhotoManager.h"
 
+void PhotoManager::Start()
+{
+    // printf("PhotoManager Start\n");
+}
+
+void PhotoManager::Proc()
+{
+    // printf("PhotoManager Proc\n");
+}
+
+void PhotoManager::Shutdown()
+{
+    // printf("PhotoManager Shutdown\n");
+}
+
+void PhotoManager::Restart()
+{
+    // printf("PhotoManager Restart\n");
+}
+
 PhotoInfo *PhotoManager::GetPhoto(int user_id)
 {
     for (int i = 0; i < photo_count_; i++)

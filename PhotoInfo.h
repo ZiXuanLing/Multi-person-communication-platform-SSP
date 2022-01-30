@@ -4,7 +4,7 @@
 
 #include "common/macro.h"
 
-#include "proto/PhotoInfoBase.pb.h"
+#include "proto/photo_info_base.pb.h"
 
 using namespace ssp;
 

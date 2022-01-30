@@ -6,22 +6,22 @@
 
 void RelationManager::Start()
 {
-    printf("Relation Manager Start\n");
+    printf("RelationManager Start\n");
 }
 
 void RelationManager::Proc()
 {
-    printf("Relation Manager Proc\n");
+    printf("RelationManager Proc\n");
 }
 
 void RelationManager::Shutdown()
 {
-    printf("Relation Manager Shutdown\n");
+    printf("RelationManager Shutdown\n");
 }
 
 void RelationManager::Restart()
 {
-    printf("Relation Manager Restart\n");
+    printf("RelationManager Restart\n");
 }
 
 RelationInfo *RelationManager::GetRelation(int user_id)
@@ -78,4 +78,17 @@ int RelationManager::DeleteBlack(int user_id, int other_id)
     }
     int ret = black_list->DeleteBlack(other_id);
     return ret;
+}
+
+/**
+ * @brief
+ *
+ * @param user_id
+ * @return int
+ */
+int RelationManager::UserRelationInit(int user_id)
+{
+    relations_[relation_count_].set_user_id(user_id);
+    set_relation_count(relation_count() + 1);
+    return 0;
 }

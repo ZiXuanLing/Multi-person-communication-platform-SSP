@@ -11,6 +11,8 @@ class UserManager
 private:
     UserInfo users[10240];
     GETSETVAR(int, user_count)
+    GETSETVAR(int, reg_num);
+    GETSETVAR(int, cur_user_id)
     DbManager db_svr;
 
 private:

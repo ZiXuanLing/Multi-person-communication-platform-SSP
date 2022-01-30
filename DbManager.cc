@@ -39,14 +39,16 @@ int DbManager::execSql(string sql)
         result = mysql_use_result(conn);
         if (result)
         {
-            int num_fields_1 = mysql_num_fields(result); // row
-            int num_fields_2 = mysql_field_count(conn);
-            printf("num_fields_1 %d, num_fields_2 %d\n", num_fields_1, num_fields_2);
-            for (int i = 0; i < num_fields_2; i++)
+            int num_fields_1 = mysql_num_fields(result); // column
+            int num_fields_2 = mysql_field_count(conn); // column
+            int row_count = mysql_num_rows(result); // row
+            printf("row_count %d, num_fields_1 %d, num_fields_2 %d\n", row_count, num_fields_1, num_fields_2);
+            while (result)
             { // Read data by row
                 row = mysql_fetch_row(result);
                 if (row == NULL)
                 {
+                    printf("empty row\n");
                     break;
                 }
                 for (int j = 0; j < num_fields_1; j++)
@@ -55,7 +57,10 @@ int DbManager::execSql(string sql)
                 }
                 printf("\n");
             }
+            row_count = mysql_num_rows(result);
+            printf("row_count %d, num_fields_1 %d, num_fields_2 %d\n", row_count, num_fields_1, num_fields_2);
         }
+        
         mysql_free_result(result);
     }
     return SUCCESS;

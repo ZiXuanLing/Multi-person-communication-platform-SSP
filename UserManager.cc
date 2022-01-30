@@ -59,43 +59,43 @@ int UserManager::Init()
                 {
                     printf("%s\t", row[j]);
                 }
-                // users[i].set_user_id(str2int(row[0]));
-                // users[i].set_user_name()
                 ssp::UserInfoBase pb_user;
-                pb_user.CopyFrom(row[1]); /* deserialization */
+                pb_user.ParseFromArray(row[1], sizeof(row[1]));
                 // pb_user.user_id();
                 users[i].set_user_id(pb_user.user_id());
-                users[i].set_user_name(const_cast<char *>(pb_user.user_name().data()));
-                users[i].set_nick_name(const_cast<char *>(pb_user.nick_name().data()));
-                users[i].set_db_flag(0); /* 0 indicates no deletion */
+                // users[i].set_user_name(const_cast<char *>(pb_user.user_name().data()));
+                // users[i].set_nick_name(const_cast<char *>(pb_user.nick_name().data()));
+                users[i].set_db_flag(FLAG_INIT); /* 0 indicates no deletion */
                 printf("\n");
             }
             set_user_count(num_fields_2);
         }
         mysql_free_result(result);
     }
-    printf("User Manager Init\n");
+    printf("UserManager Init\n");
+    return SUCCESS;
 }
 
 int UserManager::Start()
 {
+    set_cur_user_id(10001);
     int ret = Init(); /* Initialize exactly at the beginning, such as connecting to the database to load data and so on */
     if (ret != SUCCESS)
     {
-        printf("User Manager Start Fail\n");
-        return;
+        printf("UserManager Start Fail\n");
+        return -1;
     }
-    printf("User Manager Start\n");
+    printf("UserManager Start\n");
     return SUCCESS;
 }
 
 int UserManager::Proc()
 {
 
-    printf("User Manager Proc\n");
+    printf("UserManager Running\n");
     printf("User Online %d\n", 0);       // todo  Perform performance analysis
     printf("User Online time: %d\n", 0); // todo
-    printf("User reg num: %d\n", 0);     // todo
+    printf("User reg num: %d\n", reg_num());     // todo
 
     return SUCCESS;
 }
@@ -130,14 +130,20 @@ int UserManager::Shutdown()
             // db_flag
             char data[10240];
             pb_user.SerializeToArray(data, 10240); /* Write back to the database */
-            string updateSql = "update tb_user set str='" + string(data) + "' where id=" + (const char *)pb_user.user_id() + ";";
+            char user_id[256];
+            sprintf(user_id, "%d", users[i].user_id());
+            string updateSql = "update tb_user set user_info='";
+            updateSql += data;
+            updateSql += "' where id=";
+            updateSql += user_id;
+            updateSql += ";";
             if (mysql_query(conn, updateSql.c_str()))
             {
                 printf("update fail: %s \n", mysql_error(conn));
             }
         }
     }
-    printf("User Manager Shutdown\n");
+    printf("UserManager Shutdown\n");
     return SUCCESS;
 }
 
@@ -155,6 +161,7 @@ int UserManager::ShowAll()
         printf("| %d | %s | %s | \n", users[i].user_id(), users[i].user_name(), users[i].password());
     }
     printf("=====================================\n");
+    return 0;
 }
 
 UserInfo *UserManager::GetUser(int user_id)
@@ -188,18 +195,21 @@ int UserManager::CreateUser(const char *user_name, const char *pswd, int from, i
             return USER_EXIST;
         }
     }
-    int cur_user_id = 1; // GetVarUserId(); // todo get user_id from tb_var str='user_id'
+    // int cur_user_id = cur_user_id; // GetVarUserId(); // todo get user_id from tb_var str='user_id'
+    
     if (user_count_ < 10239)
     {
-        users[user_count_].set_user_id(cur_user_id);
+        users[user_count_].set_user_id(cur_user_id());
         users[user_count_].set_user_name(const_cast<char *>(user_name));
         users[user_count_].set_password(const_cast<char *>(pswd));
         users[user_count_].set_from(from);
         users[user_count_].set_reg_time(time_now);
         user_count_++;
-        return SUCCESS;
+        // return SUCCESS;
     }
-    return OK;
+    set_cur_user_id(cur_user_id() + 1);
+    set_reg_num(reg_num() + 1); // Number of registrations plus one
+    return 0;
 }
 
 int UserManager::DeleteUser(int user_id)

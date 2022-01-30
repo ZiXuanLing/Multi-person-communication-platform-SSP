@@ -1,90 +1,124 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 #include <unistd.h>
-#include <arpa/inet.h>
 #include <sys/socket.h>
+#include <arpa/inet.h>
+#include <sys/time.h>
+#include <netinet/in.h>
 
-#include "proto/user_info_base.pb.h"
 #include "proto/message_define.pb.h"
 
-#include "common/mess_type.h"
+// #include "common/mess_type.h"
+#include "common/ret_value.h"
 
-char user_name[] = "hank";
-char psssword[] = "hank1234";
+unsigned char send_buffer[10244];
+unsigned char recv_buffer[10244];
 
-char buffer[10244];
+int sock;
 
-char data[10244];
-int SetMessType(const char *mess_type)
-{
-    int len = strlen(mess_type);
-    if (len != 3)
-    {
-        return -1;
-    }
-    /* Reserve three bytes of space for identification */
-    data[0] = mess_type[0];
-    data[1] = mess_type[1];
-    data[2] = mess_type[2];
+ssp::RegReq regReq;
+ssp::RegRsp regRsp;
 
+int ProtoInit() {
+    // regReq.set_ver(1);
+    regReq.set_mess_type(401); // Registration message
+    regReq.set_user_name("hank");
+    regReq.set_password("12345678");
     return 0;
 }
-int GetMessType()
-{
-    int len = strlen(buffer);
-    if (len != 3)
-    {
-        return -1;
-    }
-    return ((buffer[0] - '0') * 100 + (buffer[1] - '0') * 10 + buffer[2] - '0');
+
+int SetReqMessType(const char *mess_type) {
+    send_buffer[0] = mess_type[0];
+    send_buffer[1] = mess_type[1];
+    send_buffer[2] = mess_type[2];
+    return 0;
 }
-int main()
-{
-    // login
-    ssp::UserInfoBase pb_user;
-    // pb_user.set_user_id();
-    pb_user.set_user_name(user_name);
-    pb_user.set_password(psssword);
 
-    int sock = socket(AF_INET, SOCK_STREAM, 0);
-    struct sockaddr_in serv_addr;
-    memset(&serv_addr, 0, sizeof(serv_addr));
+int SendRegReq() {
+    SetReqMessType("401");
+    regReq.SerializeToArray(send_buffer + 3, 10240);
+    printf("%s\n", send_buffer + 3);
+    int size_buffer = sizeof(send_buffer);
+    int ret = send(sock, send_buffer, size_buffer, 0);
+    if (ret > 0) {
+        return 0;
+    }
+    return -1;
+}
 
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-    serv_addr.sin_port = htons(8999);
+int mess_type;
 
-    connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr));
-    int times = 10000;
-    char data[10240];
-    int ret = SetMessType("101");
-    if (ret != 0)
-    {
+int GetMessType() {
+    return ((recv_buffer[0] - '0') * 100 + (recv_buffer[1] - '0') * 10 + recv_buffer[2] - '0');
+}
+
+int RecvRegRsp() {
+    int ret = recv(sock, recv_buffer, 10244, 0);
+    printf("ret: %d\n", ret);
+    GetMessType();
+    printf("mess_type: %d\n", mess_type);
+    if (mess_type != 402) {
         return -1;
     }
-    pb_user.SerializeToArray(data + 3, 10240); /* Serialized data */
-    send(sock, data, sizeof(data), 0);
-    while (times--)
-    {
-        int ret = recv(sock, buffer, sizeof(buffer), 0);
-        if (ret < 0)
-        {
-            continue;
-        }
-        int mess_type = GetMessType();
-        if (mess_type < 0)
-        {
-            return -1;
-        }
-        ssp::LoginRsp loginRsp;
-        switch (mess_type)
-        {
-        case LOGIN_RSP:
-            loginRsp.ParseFromArray(buffer + 3, 10240);
-            break;
-        }
+    // The response received at this point is 402
+    regRsp.ParseFromArray(recv_buffer + 3, 10240);
+    printf("regRsp:{ret: %d}\n", regRsp.ret());
+    if (regRsp.ret() < 0) {
+        printf("error\n");
+        return -1;
     }
     return 0;
+}
+
+int ClientSocketInit() {
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    struct sockaddr_in server_addr;
+    memset(&server_addr, 0, sizeof(server_addr));
+    server_addr.sin_family = AF_INET;
+    server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    server_addr.sin_port = htons(8999);
+    int conn_ret = connect(sock, (struct sockaddr*) &server_addr, sizeof(server_addr));
+    if (conn_ret < 0) {
+        printf("connect_ret: %d\n", conn_ret);
+        return conn_ret;
+    }
+    return 0;
+}
+
+int main() {
+    int client_on = 1;
+    int n = 0;
+    int ret;
+    ClientSocketInit();
+    while (client_on) {
+        switch (n) {
+            case 0: 
+                ProtoInit();
+                n = 1; // Sends packets to the server
+                break;
+            case 1: 
+                ret = SendRegReq();
+                printf("%d\n", ret);
+                if (ret == 0) {
+                    n = 2; // The packet is successfully sent and received from the server
+                }
+                break;
+            case 2: 
+                printf("%d\n", n);
+                ret = RecvRegRsp();
+                printf("res%d", ret);
+                if (ret == 0) {
+                    n = 1; // The packet is successfully received and sent to the server
+                }
+                else {
+                    if (ret == -2) {
+                        client_on = 0;
+                    }
+                }
+                break;
+            default:
+                client_on = 0;
+                break;
+        }
+    }
 }
